@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width = device-width, initial-scale = 1">
+        <title>COGITATION</title>
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link href="Cadastro.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    </head>
+</html>
+
+<! -- Barra de Navegação -->
+<div id="nav-placeholder">
+</div>
+<script>
+$(function(){
+  $("#nav-placeholder").load("nav.html");
+});
+</script>
+
+<div class="login-page">
+  <div class="form">
+    <form class="login-form">
+      <input type="text" required placeholder="Usuário"/>
+      <input type="text" required placeholder="E-mail"/>
+      <input type="password" required placeholder="Senha"/>
+      <input type="password" required  placeholder="Confirmar senha"/>
+      <input type="text" required placeholder="E-mail"/>
+      <input type="tel" required placeholder="Telefone"/>
+      <input type="text" required placeholder="Endereço"/>
+      <input id="date" required type="date" value="0000-00-00" placeholder="Data do Nascimento"/>
+      <button>Cadastro</button>
+      <p class="message">Já cadastrado? <a href="Login.html">Faça login</a></p>
+    </form>
+  </div>
+</div>
