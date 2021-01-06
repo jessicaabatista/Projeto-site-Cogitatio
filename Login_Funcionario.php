@@ -15,21 +15,28 @@ include "Conectar.php";
 <?php
 if(isset($_POST['logar'])){
 
-    $F_Email = mysqli_real_escape_string($strcon,$_POST['usuario']);
-    $F_Senha = mysqli_real_escape_string($strcon,$_POST['senha']);
+    $link = mysqli_connect("127.0.0.1", "my_user", "my_password", "my_db");
+
+    $F_Email = mysqli_real_escape_string($link,$_POST['usuario']);
+
+    $F_Senha = mysqli_real_escape_string($link,$_POST['senha']);
 
     if ($usuario != "" && $senhaU != ""){
         $sql_query = "SELECT count(*) as cntUser from funcionario where `usuario` = '$F_Email' and `senha` = '$F_Senha'";
-        $result = mysqli_query($strcon,$sql_query);
+
+        $result = mysqli_query($link,$sql_query);
+
         $row = mysqli_fetch_array($result);
 
         $count = $row['cntUser'];
 
         if($count > 0){
             $_SESSION['usuarioLogado'] = $F_Email;
+
             header('Location: Inicial_Funcionario.html');
         }else{
           header('Location: Login_Funcionario.html');
+
             echo "Usuario invalido";
         }
 
