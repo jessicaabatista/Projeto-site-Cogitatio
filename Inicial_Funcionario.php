@@ -13,12 +13,12 @@
 
 <!-- Barra de Navegação -->
 <div id="nav-placeholder">
+  <script>
+    $(function() {
+      $("#nav-placeholder").load("Barra_Funcionario.php");
+    });
+  </script>
 </div>
-<script>
-$(function(){
-  $("#nav-placeholder").load("Barra_Paciente.html");
-});
-</script>
 
 <div class="login-page"></div>
   <div class="form2">

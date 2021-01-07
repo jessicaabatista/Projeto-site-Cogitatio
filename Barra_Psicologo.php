@@ -1,20 +1,18 @@
-//Barra de navegação inicial, aparece quando a pessoa não está logada em conta alguma.
-
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <!-- Barra de Navegação -->
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img src="img/logo.png"> COGITATION</a>
+            <a class="navbar-brand" href="Inicial_Psicologo.php"><img src="img/logo.png"> COGITATION</a>
             <!-- Titulo -->
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Inicio</a>
+                            <a class="nav-link" href="Inicial_Psicologo.php">Consultas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Login_Funcionario.html">Funcionario</a>
+                            <a class="nav-link" href="Perfil_Psicologo.php">Alterar Dados</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Sobre.html">Sobre</a>
+                            <a class="nav-link" href="logout.php">Sair</a>
                         </li>
                     </ul>
                 </div>

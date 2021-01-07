@@ -17,7 +17,7 @@
 </div>
 <script>
 $(function(){
-  $("#nav-placeholder").load("Barra_Inicial.html");
+  $("#nav-placeholder").load("Barra_Inicial.php");
 });
 </script>
 
@@ -27,10 +27,10 @@ $(function(){
     <div>
         <h3>Marque suas consultas</h3>
         <br>
-        <a href="Login_Paciente.html">
+        <a href="Login_Paciente.php">
             <button type="button" class="btn btn-outline-light btn-lg"> Login </button>
         </a>
-        <a href="Cadastro_Paciente.html">
+        <a href="Cadastro_Paciente.php">
             <button type="button" class="btn btn-primary btn-lg">Cadastro</button>
         </a>	
     </div>

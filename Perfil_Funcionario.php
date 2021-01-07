@@ -34,7 +34,6 @@
     <input type="text" required placeholder="Nome" />
     <input type="tel" required placeholder="Telefone" />
     <input type="text" required placeholder="Endereço" />
-    <input id="date" required type="date" value="0000-00-00" placeholder="Data do Nascimento" />
     </select><br><br>
     <input type="submit" value="Alterar" id="Alterar" name="Alterar">
   </form>

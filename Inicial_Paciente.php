@@ -13,12 +13,12 @@
 
 <!-- Barra de Navegação -->
 <div id="nav-placeholder">
+  <script>
+    $(function() {
+      $("#nav-placeholder").load("Barra_Paciente.php");
+    });
+  </script>
 </div>
-<script>
-$(function(){
-  $("#nav-placeholder").load("Barra_Paciente.html");
-});
-</script>
 
 <div class="login-page"></div>
   <div class="form2">
@@ -26,7 +26,7 @@ $(function(){
     <form method="POST" >
       TABELA DE CONSULTAS DO PACIENTE
       </select><br><br>
-      <a href="Marcar_Consulta.html">
+      <a href="Marcar_Consulta.php">
         <button type="button" class="btn btn-primary btn-lg">Marcar Consulta</button>
     </a>	
     </form>

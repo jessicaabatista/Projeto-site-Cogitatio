@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE-edge">
         <meta name="viewport" content="width = device-width, initial-scale = 1">
-        <title>Marcar Consulta</title>
+        <title>Agenda</title>
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link href="Estilo.css" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -13,20 +13,18 @@
 
 <!-- Barra de Navegação -->
 <div id="nav-placeholder">
+  <script>
+    $(function() {
+      $("#nav-placeholder").load("Barra_Funcionario.php");
+    });
+  </script>
 </div>
-<script>
-$(function(){
-  $("#nav-placeholder").load("Barra_Paciente.html");
-});
-</script>
 
 <div class="login-page"></div>
   <div class="form2">
-    <p>Marcar horário</p> 
-    <form method="POST">
-     PARTE ONDE O USUARIO PODE MARCAR A CONSULTA
-      </select><br><br>
-	
+    <p>Agenda</p> 
+    <form method="POST" >
+        
     </form>
   </div>
 </div>

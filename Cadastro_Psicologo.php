@@ -23,10 +23,12 @@
 </div>
 
 <?
-$P_Email = $_POST['email'];
+$P_Crp   = $_POST['crp'];
 $P_Senha = $_POST['senha'];
 $P_Cpf   = $_POST['cpf'];
 $P_Nome  = $_POST['nome'];
+$P_Email = $_POST['email'];
+
 $P_Telefone = $_POST['telefone'];
 $P_Endereco = $_POST['endereco'];
 $P_Data = $_POST['data'];
@@ -34,12 +36,12 @@ $P_Data = $_POST['data'];
 
 <div class="login-page"></div>
 <div class="form">
-  <p>Cadastro de Funcionarios</p>
+  <p>Cadastro de Psicologo</p>
   <form method="POST">
+  <input type="text" required placeholder="CRP" />
     <input type="text" required placeholder="E-mail" />
     <input type="password" required placeholder="Senha" />
     <input type="password" required placeholder="Confirmar senha" />
-    <input type="text" required placeholder="CPF" />
     <input type="text" required placeholder="Nome" />
     <input type="tel" required placeholder="Telefone" />
     <input type="text" required placeholder="Endereço" />

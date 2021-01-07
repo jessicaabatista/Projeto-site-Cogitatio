@@ -1,16 +1,40 @@
-<?php
-include "Conectar.php";
-?>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <meta name="viewport" content="width = device-width, initial-scale = 1">
-    <title>Login Paciente</title>
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link href="Estilo.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+  <title>Login Paciente</title>
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link href="Estilo.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
+
+</html>
+
+<!-- Barra de Navegação -->
+<div id="nav-placeholder">
+  <script>
+    $(function() {
+      $("#nav-placeholder").load("Barra_Inicial.php");
+    });
+  </script>
+</div>
+
+
+<div class="login-page">
+  <div class="form">
+    <p>Login Paciente</p>
+    <form method="post">
+      <input type="text" id="email" name="email" placeholder="E-mail" />
+      <input type="password" id="senha" name="senha" placeholder="Senha" />
+      <input type="submit" value="logar" id="logar" name="logar">
+      <p class="message">Não tem cadastro? <a href="Cadastro_Paciente.php">Crie uma conta</a></p>
+    </form>
+  </div>
+</div>
 
 <?php
 
@@ -34,9 +58,9 @@ if (isset($_POST['logar'])) {
         if ($count > 0) {
             $_SESSION['usuarioLogado'] = $usuario;
 
-            header('Location: Inicial_Paciente.html');
+            header('Location: Inicial_Paciente.php');
         } else {
-            header('Location: Login_Paciente.html');
+            header('Location: Login_Paciente.php');
 
             echo "Usuario invalido";
         }
