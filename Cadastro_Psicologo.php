@@ -22,43 +22,44 @@
   </script>
 </div>
 
-<?
-$P_Crp   = $_POST['crp'];
-$P_Senha = $_POST['senha'];
-$P_Cpf   = $_POST['cpf'];
-$P_Nome  = $_POST['nome'];
-$P_Email = $_POST['email'];
-
-$P_Telefone = $_POST['telefone'];
-$P_Endereco = $_POST['endereco'];
-$P_Data = $_POST['data'];
-?>
-
 <div class="login-page"></div>
 <div class="form">
   <p>Cadastro de Psicologo</p>
   <form method="POST">
-  <input type="text" required placeholder="CRP" />
-    <input type="text" required placeholder="E-mail" />
-    <input type="password" required placeholder="Senha" />
-    <input type="password" required placeholder="Confirmar senha" />
-    <input type="text" required placeholder="Nome" />
-    <input type="tel" required placeholder="Telefone" />
-    <input type="text" required placeholder="Endereço" />
+    <input type="text" maxlength="30" required name="crp" placeholder="CRP" />
+    <input type="text" maxlength="11" required name="cpf" placeholder="CPF" />
+    <input type="text" maxlength="100" required name="email" placeholder="E-mail" />
+    <input type="password" maxlength="30" required name="senha" placeholder="Senha" />
+    <input type="text" maxlength="100" required name="nome" placeholder="Nome" />
+    <input type="tel" maxlength="11" required name="telefone" placeholder="Telefone" />
+    <input type="textarea" maxlength="500" required name="descricao" placeholder="Descrição Profissional" />
     </select><br><br>
     <input type="submit" value="Cadastro" id="cadastro" name="cadastro">
   </form>
 </div>
 </div>
 
-<?
-$link = mysqli_connect("127.0.0.1", "my_user", "my_password", "my_db");
+<?php
 
-if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['cpf']) == false) and (empty($_POST['nome']) == false) and (empty($_POST['telefone']) == false) and (empty($_POST['endereco']) == false) and (empty($_POST['data']) == false)) { //verifica se estão preenchidos
+include 'database.php';
 
-  $sql = "INSERT INTO paciente (id_paciente, email_paciente, senha_paciente, cpf_paciente, nome_paciente, telefone_paciente, endereco_paciente, data_nasc_paciente) values ('$P_Email', '$P_Senha', '$P_Cpf', '$P_Nome', '$P_Telefone', '$P_Enderecp', '$P_Data')";
+if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['cpf']) == false) and (empty($_POST['crp']) == false) and (empty($_POST['nome']) == false) and (empty($_POST['telefone']) == false) and (empty($_POST['descricao']) == false)) { //verifica se estão preenchidos
 
-  $resultado = mysqli_query($link, $sql) or die("Erro ao tentar gravar as informações!");
+  $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
+
+  $P_Crp = $_POST['crp'];
+  $P_Senha = $_POST['senha'];
+  $P_Cpf   = $_POST['cpf'];
+  $P_Nome  = $_POST['nome'];
+  $P_Email = $_POST['email'];
+  $P_Telefone = $_POST['telefone'];
+  $P_Descricao = $_POST['descricao'];
+
+  $sql = "INSERT INTO psicologo (`email_psicologo`, `senha_psicologo`, `cpf_psicologo`, `crp_psicologo`, `nome_psicologo`, `telefone_psicologo`, `infos_psicologo`) values ('" . $P_Email . "', '" . $P_Senha . "', '" . $P_Cpf . "', '" . $P_Crp . "', '" . $P_Nome . "', '" . $P_Telefone . "', '" . $P_Descricao . "')";
+
+  mysqli_query($link, $sql) or die("Erro ao tentar gravar as informações!");
+
+  mysqli_close($link);
 
   echo "Cadastrado feito com sucesso";
 } else {

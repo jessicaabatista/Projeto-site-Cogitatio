@@ -22,16 +22,6 @@
   </script>
 </div>
 
-<?
-$P_Email = $_POST['email'];
-$P_Senha = $_POST['senha'];
-$P_Cpf   = $_POST['cpf'];
-$P_Nome  = $_POST['nome'];
-$P_Telefone = $_POST['telefone'];
-$P_Endereco = $_POST['endereco'];
-$P_Data = $_POST['data'];
-?>
-
 <div class="login-page"></div>
 <div class="form">
   <p>Cadastro de Funcionarios</p>
@@ -49,12 +39,22 @@ $P_Data = $_POST['data'];
 </div>
 </div>
 
-<?
-$link = mysqli_connect("127.0.0.1", "my_user", "my_password", "my_db");
+<?php
 
-if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['cpf']) == false) and (empty($_POST['nome']) == false) and (empty($_POST['telefone']) == false) and (empty($_POST['endereco']) == false) and (empty($_POST['data']) == false)) { //verifica se estão preenchidos
+include 'database.php';
 
-  $sql = "INSERT INTO paciente (id_paciente, email_paciente, senha_paciente, cpf_paciente, nome_paciente, telefone_paciente, endereco_paciente, data_nasc_paciente) values ('$P_Email', '$P_Senha', '$P_Cpf', '$P_Nome', '$P_Telefone', '$P_Enderecp', '$P_Data')";
+if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['cpf']) == false) and (empty($_POST['nome']) == false) and (empty($_POST['telefone']) == false) and (empty($_POST['endereco']) == false)) { //verifica se estão preenchidos
+
+  $link = mysqli_connect("HOST", "USER", "PASSWORD", "DATABASENAME");
+
+  $F_Email = $_POST['email'];
+  $F_Senha = $_POST['senha'];
+  $F_Cpf   = $_POST['cpf'];
+  $F_Nome  = $_POST['nome'];
+  $F_Telefone = $_POST['telefone'];
+  $F_Endereco = $_POST['endereco'];
+
+  $sql = "INSERT INTO funcionario (`email_funcionario`, `senha_funcionario`, `cpf_funcionario`, `nome_funcionario`, `telefone_funcionario`, `endereco_funcionario`, `fk_psicologo`) values ('" . $F_Email . "', '" . $F_Senha . "', '" . $F_Cpf . "', '" . $F_Nome . "', '" . $F_Telefone . "', '" . $F_Endereco . "', 1)";
 
   $resultado = mysqli_query($link, $sql) or die("Erro ao tentar gravar as informações!");
 
