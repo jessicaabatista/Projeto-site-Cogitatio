@@ -1,5 +1,7 @@
 <?php
-define('USER', 'root');
-define('HOST', '127.0.0.1');
-define('PASSWORD', '');
-define('DATABASENAME', 'id12955974_db_cogitatio');
+    $Servidor = 'localhost';
+    $nomeBanco = 'id12955974_db_cogitatio';
+    $Usuario = 'root';
+    $Senha = '';
+    $strcon = mysqli_connect($Servidor, $Usuario, $Senha, $nomeBanco); 
+?>
