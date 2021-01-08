@@ -40,7 +40,7 @@ session_start();
 
 if (isset($_POST['logar'])) {
 
-  $link = mysqli_connect("127.0.0.1", "my_user", "my_password", "my_db");
+  $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 
   $P_Email = mysqli_real_escape_string($link, $_POST['usuario']);
 

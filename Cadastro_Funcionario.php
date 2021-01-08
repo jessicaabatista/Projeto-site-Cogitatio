@@ -45,7 +45,7 @@ include 'database.php';
 
 if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['cpf']) == false) and (empty($_POST['nome']) == false) and (empty($_POST['telefone']) == false) and (empty($_POST['endereco']) == false)) { //verifica se estão preenchidos
 
-  $link = mysqli_connect("HOST", "USER", "PASSWORD", "DATABASENAME");
+  $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 
   $F_Email = $_POST['email'];
   $F_Senha = $_POST['senha'];
