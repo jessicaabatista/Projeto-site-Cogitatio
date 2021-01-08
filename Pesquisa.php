@@ -21,28 +21,24 @@
 <!-- Criando tabela e cabeçalho de dados: -->
 <div class="login-page"></div>
   <div class="form">
-  <table border="1" style='width:20%'>
+  <table border="1" style='width:50%'>
     <tr>
         <th>NOME</th>
-        <th>NOME</th>
-        <th>NOME</th>
-        <th>NOME</th>
-        <th>NOME</th>
-        <th>NOME</th>
-     </tr>
+        <th>CPF</th>
+    </tr>
   </div>
 </div>
  
 <?php
-
     $sql = "SELECT * FROM funcionario WHERE nome_funcionario = '$F_Nome'";
     $resultado = mysqli_query($strcon,$sql) or die("Erro ao retornar dados");
    
-    while ($registro = mysqli_fetch_array($resultado))
-    {
+    while ($registro = mysqli_fetch_array($resultado)){
       $F_Nome = $registro['nome_funcionario'];
+      $F_Cpf = $registro['cpf_funcionario'];
       echo "<tr>";
       echo "<td>".$F_Nome."</td>";
+      echo "<td>".$F_Cpf."</td>";
       echo "</tr>";
     }
     mysqli_close($strcon);

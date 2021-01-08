@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+  <title>Cadastro</title>
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link href="Estilo.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+</html>
+
+<!-- Barra de Navegação -->
+<div id="nav-placeholder">
+  <script>
+    $(function() {
+      $("#nav-placeholder").load("Barra_Inicial.php");
+    });
+  </script>
+</div>
+
+<div class="login-page"></div>
+<div class="form">
+  <p>Cadastro de Psicologo</p>
+  <form method="POST" action="Cadastro_Psicologo.php">
+    <input type="text" maxlength="30" required name="crp" placeholder="CRP" />
+    <input type="text" maxlength="11" required name="cpf" placeholder="CPF" />
+    <input type="text" maxlength="100" required name="email" placeholder="E-mail" />
+    <input type="password" maxlength="30" required name="senha" placeholder="Senha" />
+    <input type="text" maxlength="100" required name="nome" placeholder="Nome" />
+    <input type="tel" maxlength="11" required name="telefone" placeholder="Telefone" />
+    <input type="text" maxlength="11" required name="endereco" placeholder="endereco" />
+    <input type="textarea" maxlength="500" required name="descricao" placeholder="Descrição Profissional" />
+    </select><br><br>
+    <input type="submit" value="Cadastro" id="cadastro" name="cadastro">
+  </form>
+</div>
+</div>
+
