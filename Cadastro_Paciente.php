@@ -44,9 +44,9 @@
 
 <?php
 
-include 'database.php';
-
 if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['cpf']) == false) and (empty($_POST['nome']) == false) and (empty($_POST['telefone']) == false) and (empty($_POST['endereco']) == false) and (empty($_POST['data']) == false)) { //verifica se estão preenchidos
+
+  require('database.php');
 
   $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 
@@ -58,7 +58,7 @@ if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and 
   $P_Endereco = $_POST['endereco'];
   $P_Data = $_POST['data'];
 
-  $sql = "INSERT INTO paciente (`email_paciente`, `senha_paciente`, `cpf_paciente`, `nome_paciente`, `telefone_paciente`, `endereco_paciente`, `data_nasc_paciente`) values ('" . $F_Email . "', '" . $F_Senha . "', '" . $F_Cpf . "', '" . $F_Nome . "', '" . $F_Telefone . "', '" . $F_Endereco . "', '" . $F_Data . "',)";
+  $sql = "INSERT INTO paciente (`email_paciente`, `senha_paciente`, `cpf_paciente`, `nome_paciente`, `telefone_paciente`, `endereco_paciente`, `data_nasc_paciente`) values (' $F_Email ', ' $F_Senha ', ' $F_Cpf ', '$F_Nome ', ' $F_Telefone ', ' $F_Endereco ', ' $F_Data ',)";
 
   $resultado = mysqli_query($link, $sql) or die("Erro ao tentar gravar as informações!");
 

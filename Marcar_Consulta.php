@@ -70,7 +70,7 @@ mysqli_close($link);
 
 <?php
 
-include 'database.php';
+require('database.php');
 
 if ((empty($_POST['psicologo']) == false) and (empty($_POST['data']) == false) and (empty($_POST['horario']) == false) and (empty($_POST['paciente']) == false)) { //verifica se estão preenchidos
 
@@ -79,7 +79,7 @@ if ((empty($_POST['psicologo']) == false) and (empty($_POST['data']) == false) a
   $horario   = $_POST['horario'];
   $paciente  = $_POST['paciente'];
 
-  $sql = "INSERT INTO consulta (`data`, `horario`, `fk_psicologo`, `fk_paciente`) values ('" . $data . "', '" . $horario . "', '" . $psicologo . "', '" . $paciente . ")";
+  $sql = "INSERT INTO consulta (`data`, `horario`, `fk_psicologo`, `fk_paciente`) values ('$data', '$horario', '$psicologo', '$paciente)";
 
   $resultado = mysqli_query($link, $sql) or die("Erro ao tentar gravar as informações!");
 

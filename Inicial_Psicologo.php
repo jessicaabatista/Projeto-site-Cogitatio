@@ -4,7 +4,7 @@ $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 
 $sql = "SELECT * FROM consulta c
   INNER JOIN paciente p ON c.fk_paciente = p.id_paciente
-  WHERE c.fk_psicologo = 1";
+  WHERE c.fk_psicologo = " . $_SESSION['id_psicologo'] . "";
 
 $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
 
@@ -39,14 +39,17 @@ mysqli_close($link);
 <div class="login-page"></div>
 <div class="form2">
   <p>Agenda</p>
-  <form method="POST">
+  <table>
+    <td>Data</td>
+    <td>Horário</td>
+    <td>Paciente</td>
     <?php
     while ($agenda = mysqli_fetch_array($consultas)) {
-      echo '<input value="' . $agenda['data'] . '">';
-      echo '<input value="' . $agenda['horario'] . '">';
-      echo '<input value="' . $agenda['nome_paciente'] . '">';
+      echo '<tr>' . $agenda['data'] . '</tr>';
+      echo '<tr>' . $agenda['horario'] . '</tr>';
+      echo '<tr>' . $agenda['nome_paciente'] . '</tr>';
     }
     ?>
-  </form>
+  </table>
 </div>
 </div>
