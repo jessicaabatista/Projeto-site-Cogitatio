@@ -37,17 +37,15 @@ mysqli_close($link);
 <div class="login-page"></div>
 <div class="form2">
   <p>Suas Consultas</p>
-  <form method="POST">
+  <table>
+    <td>Data</td>
+    <td>Horário</td>
     <?php
     while ($agenda = mysqli_fetch_array($consultas)) {
-      echo '<input value="' . $agenda['data'] . '">';
-      echo '<input value="' . $agenda['horario'] . '">';
+      echo '<tr>' . $agenda['data'] . '</tr>';
+      echo '<tr>' . $agenda['horario'] . '</tr>';
     }
     ?>
-
-    <a href="Marcar_Consulta.php">
-      <button type="button" class="btn btn-primary btn-lg">Marcar Consulta</button>
-    </a>
-  </form>
+  </table>
 </div>
 </div>

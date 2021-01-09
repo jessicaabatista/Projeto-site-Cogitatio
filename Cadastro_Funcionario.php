@@ -1,14 +1,14 @@
 <?php
-   // arquivo de conexão com o banco de dados:
-   include_once("database.php");
-   
-   // Recebendo os dados a inserir
-  $F_Email = $_POST['email'];
-  $F_Senha = $_POST['senha'];
-  $F_Cpf   = $_POST['cpf'];
-  $F_Nome  = $_POST['nome'];
-  $F_Telefone = $_POST['telefone'];
-  $F_Endereco = $_POST['endereco'];
+// arquivo de conexão com o banco de dados:
+include_once("database.php");
+
+// Recebendo os dados a inserir
+$F_Email = $_POST['email'];
+$F_Senha = $_POST['senha'];
+$F_Cpf   = $_POST['cpf'];
+$F_Nome  = $_POST['nome'];
+$F_Telefone = $_POST['telefone'];
+$F_Endereco = $_POST['endereco'];
 ?>
 
 <head>
@@ -32,11 +32,11 @@
 </div>
 
 <div class="login-page"></div>
-  <div class="form">
+<div class="form">
   <table border="1" style='width:20%'>
     <tr>
     </tr>
-  </div>
+</div>
 </div>
 
 <?php
@@ -46,7 +46,7 @@ if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and 
 
   $sql = "INSERT INTO funcionario (id_funcionario, senha_funcionario, email_funcionario, cpf_funcionario, nome_funcionario, endereco_funcionario, telefone_funcionario, fk_psicologo) values (@@IDENTITY, '$F_Senha','$F_Email', '$F_Cpf', '$F_Nome', '$F_Endereco', '$F_Telefone', @@IDENTITY)";
 
-  $resultado = mysqli_query($strcon,$sql)or die("Erro ao tentar gravar as informações!");
+  $resultado = mysqli_query($strcon, $sql) or die("Erro ao tentar gravar as informações!");
 
   echo "Cadastrado feito com sucesso";
 } else {

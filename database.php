@@ -1,6 +1,6 @@
 <?php
     $Servidor = 'localhost';
-    $nomeBanco = 'id12955974_db_cogitatio';
+    $nomeBanco = 'dbcogitatio';
     $Usuario = 'root';
     $Senha = '';
     $strcon = mysqli_connect($Servidor, $Usuario, $Senha, $nomeBanco); 
