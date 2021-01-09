@@ -29,10 +29,10 @@
     <div>
         <h3>Marque suas consultas</h3>
         <br>
-        <a href="Login_Paciente.php">
+        <a href="Login_Paciente.html">
             <button type="button" class="btn btn-outline-light btn-lg"> Login </button>
         </a>
-        <a href="Cadastro_Paciente.php">
+        <a href="Cadastro_Paciente.html">
             <button type="button" class="btn btn-primary btn-lg">Cadastro</button>
         </a>
     </div>

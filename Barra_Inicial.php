@@ -12,7 +12,7 @@
                     <a class="nav-link" href="Login_Funcionario.php">Funcionario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Sobre.php">Sobre</a>
+                    <a class="nav-link" href="Cadastro_Funcionario.html">Cadastro</a>
                 </li>
             </ul>
         </div>
