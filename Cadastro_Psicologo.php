@@ -47,7 +47,7 @@ $P_Descricao = $_POST['descricao'];
 
 if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['cpf']) == false) and (empty($_POST['crp']) == false) and (empty($_POST['nome']) == false) and (empty($_POST['endereco']) == false) and (empty($_POST['telefone']) == false) and (empty($_POST['descricao']) == false)) { //verifica se estão preenchidos
 
-  $sql = "INSERT INTO psicologo (email_psicologo, senha_psicologo, cpf_psicologo, crp_psicologo, nome_psicologo, telefone_psicologo, endereco_psicologo, infos_psicologo) values ('$P_Crp', '$P_Senha','$P_Email', '$P_Cpf', '$P_Nome', '$P_Endereco', '$P_Telefone', '$P_Descricao')";
+  $sql = "INSERT INTO psicologo (email_psicologo, senha_psicologo, cpf_psicologo, crp_psicologo, nome_psicologo, telefone_psicologo, endereco_psicologo, infos_psicologo) values ('$P_Email', '$P_Senha', '$P_Cpf', '$P_Crp',  '$P_Nome', '$P_Telefone', '$P_Endereco', '$P_Descricao')";
 
   mysqli_query($strcon, $sql) or die ("Erro ao tentar gravar as informações!");
 

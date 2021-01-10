@@ -44,7 +44,7 @@ $F_Endereco = $_POST['endereco'];
 
 if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['cpf']) == false) and (empty($_POST['nome']) == false) and (empty($_POST['telefone']) == false) and (empty($_POST['endereco']) == false)) { //verifica se estão preenchidos
 
-  $sql = "INSERT INTO funcionario (id_funcionario, senha_funcionario, email_funcionario, cpf_funcionario, nome_funcionario, endereco_funcionario, telefone_funcionario) values ('$F_Senha','$F_Email', '$F_Cpf', '$F_Nome', '$F_Endereco', '$F_Telefone')";
+  $sql = "INSERT INTO funcionario (senha_funcionario, email_funcionario, cpf_funcionario, nome_funcionario, endereco_funcionario, telefone_funcionario) values ('$F_Senha','$F_Email', '$F_Cpf', '$F_Nome', '$F_Endereco', '$F_Telefone')";
 
   $resultado = mysqli_query($strcon, $sql) or die("Erro ao tentar gravar as informações!");
 

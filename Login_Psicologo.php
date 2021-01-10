@@ -7,6 +7,7 @@ $P_Senha = $_POST['senha'];
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE-edge">
@@ -36,31 +37,24 @@ $P_Senha = $_POST['senha'];
   </div>
 </div>
 
-    <?php
-    if(isset($_POST['logar'])){
-    
-        $P_Email = mysqli_real_escape_string($strcon,$_POST['email']);
-        $P_Senha = mysqli_real_escape_string($strcon,$_POST['senha']);
-    
-        if ($P_Email != "" && $P_Senha != ""){
-          $sql_query = "SELECT count(*) AS cntUser FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
-            $result = mysqli_query($strcon,$sql_query);
-            $row = mysqli_fetch_array($result);
-            $count = $row['cntUser'];
-    
-            if($count > 0){
-                $P_Sessao = "SELECT id_psicologo FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
-                $_SESSION['psicologo'] = $P_Sessao;
-                header('Location: inicial_psicologo.php');
-            }else{
-                echo "Usuario invalido";
-            }
-    
-        }
-    
+<?php
+if (isset($_POST['logar'])) {
+
+  $P_Email = mysqli_real_escape_string($strcon, $_POST['email']);
+  $P_Senha = mysqli_real_escape_string($strcon, $_POST['senha']);
+
+  if ($P_Email != "" && $P_Senha != "") {
+    $sql_query = "SELECT count(*) AS cntUser FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
+    $result = mysqli_query($strcon, $sql_query);
+    $row = mysqli_fetch_array($result);
+    $count = $row['cntUser'];
+
+    if ($count > 0) {
+      $P_Sessao = "SELECT id_psicologo FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
+      $_SESSION['psicologo'] = $P_Sessao;
+      header('Location: inicial_psicologo.php');
+    } else {
+      echo "Usuario invalido";
     }
-
-    
-
-
-    
+  }
+}

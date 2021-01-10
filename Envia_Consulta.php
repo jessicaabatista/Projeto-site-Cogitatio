@@ -2,6 +2,22 @@
 
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 
+$psicologo = $_POST['psicologo'];
+$data = $_POST['data'];
+$horario   = $_POST['horario'];
+$paciente  = $_POST['paciente'];
+
+if ((empty($_POST['psicologo']) == false) and (empty($_POST['data']) == false) and (empty($_POST['horario']) == false) and (empty($_POST['paciente']) == false)) { //verifica se estão preenchidos
+
+  $sql = "INSERT INTO consulta (`data`, `horario`, `fk_psicologo`, `fk_paciente`) values ('$data', '$horario', '$psicologo', '$paciente')";
+
+  mysqli_query($link, $sql) or die("Erro ao tentar gravar as informações!");
+
+  echo "Cadastrado feito com sucesso";
+} else {
+  echo "Dados não preenchidos";
+}
+
 $sqlPsicologo = "SELECT nome_psicologo, id_psicologo FROM psicologo";
 
 $selectPsicologo = mysqli_query($link, $sqlPsicologo) or die("Erro ao tentar buscar as informações!");
@@ -9,8 +25,6 @@ $selectPsicologo = mysqli_query($link, $sqlPsicologo) or die("Erro ao tentar bus
 $sqlPaciente = "SELECT nome_paciente, id_paciente FROM paciente";
 
 $selectPaciente = mysqli_query($link, $sqlPaciente) or die("Erro ao tentar buscar as informações!");
-
-mysqli_close($link);
 
 ?>
 
@@ -41,26 +55,24 @@ mysqli_close($link);
 <div class="login-page"></div>
 <div class="form">
   <p>Marcar Horário</p>
-  <form method="POST" action="Envia_Consulta.php">
-    <label>Data da Consulta</label>
-    <input name="data" required type="date" value="0000-00-00" />
-    <label>Horário da Consulta</label>
-    <input name="horario" required type="time" />
+  <form method="POST">
+    <input id="data" required type="date" value="0000-00-00" placeholder="Data da Consulta" />
+    <input id="hora" required type="time" placeholder="Horário da Consulta" />
 
-    <select name="psicologo">
+    <select>
       <?php
       while ($listaPsicologo = mysqli_fetch_array($selectPsicologo)) {
-        echo '<option value="' . $listaPsicologo['id_psicologo'] . '"> ' . $listaPsicologo['nome_psicologo'] . ' <option/>';
+        echo '<option name="psicologo" value="' . $listaPsicologo['id_psicologo'] . '"> ' . $listaPsicologo['nome_psicologo'] . ' <option/>';
       }
       ?>
     </select>
     <?php
-    if (!isset($_SESSION['id_paciente'])) {
+    if (isset($_SESSION['id_paciente'])) {
     ?>
-      <select name="paciente">
+      <select>
       <?php
       while ($listaPaciente = mysqli_fetch_array($selectPaciente)) {
-        echo '<option value="' . $listaPaciente['id_paciente'] . '"> ' . $listaPaciente['nome_paciente'] . ' <option/>';
+        echo '<option name="paciente" value="' . $listaPaciente['id_paciente'] . '"> ' . $listaPaciente['nome_paciente'] . ' <option/>';
       }
     }
       ?>
