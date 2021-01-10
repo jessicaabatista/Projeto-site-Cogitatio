@@ -41,14 +41,8 @@ $selectPsicologo = mysqli_query($link, $sqlPsicologo) or die ("Erro ao tentar gr
     <input type="tel" name="telefone" required placeholder="Telefone" />
     <input type="text" name="endereco" required placeholder="Endereço" />
     <input id="date" name="data" required type="date" value="0000-00-00" placeholder="Data do Nascimento" />
-    <select>
-      <?php
-      while ($listaPsicologo = mysqli_fetch_array($selectPsicologo)) {
-        echo '<option name="psicologo" value=""' . $listaPsicologo['id_psicologo'] . '"> ' . $listaPsicologo['nome_psicologo'] . ' <option/>';
-      }
-      ?>
-
-    </select><br><br>
+    <input type="text" name="psicologo" required placeholder="psicologo" />
+    
     <input type="submit" value="Cadastro" id="cadastro" name="cadastro">
     <p class="message">Já cadastrado? <a href="Login_Paciente.php">Faça login</a></p>
   </form>

@@ -215,4 +215,4 @@ INSERT INTO `psicologo` (`id_psicologo`, `crp_psicologo`, `senha_psicologo`, `cp
 
 INSERT INTO `paciente` (`id_paciente`, `email_paciente`, `senha_paciente`, `cpf_paciente`, `nome_paciente`, `telefone_paciente`, `endereco_paciente`, `data_nasc_paciente`, `fk_psicologo`) VALUES (NULL, 'paciente@gmail.com', 'senha', '11111111111', 'Paciente Teste', '739000000', 'Paciente Endereço', '03/03/1999', '1');
 
-INSERT INTO `funcionario` (`id_funcionario`, `senha_funcionario`, `email_funcionario`, `cpf_funcionario`, `nome_funcionario`, `endereco_funcionario`, `telefone_funcionario`, `fk_psicologo`) VALUES (NULL, 'senha', 'funcionario@gmail.com', '0000000000', 'Funcionario Teste', 'Funcionario Endereço', '74900000000', '1');
+INSERT INTO `funcionario` (`id_funcionario`, `senha_funcionario`, `email_funcionario`, `cpf_funcionario`, `nome_funcionario`, `endereco_funcionario`, `telefone_funcionario`) VALUES (NULL, 'senha', 'funcionario@gmail.com', '0000000000', 'Funcionario Teste', 'Funcionario Endereço', '74900000000');

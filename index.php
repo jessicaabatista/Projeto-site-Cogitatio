@@ -32,7 +32,7 @@
         <a href="Login_Paciente.html">
             <button type="button" class="btn btn-outline-light btn-lg"> Login </button>
         </a>
-        <a href="Cadastro_Paciente.html">
+        <a href="Cadastro_Paciente.php">
             <button type="button" class="btn btn-primary btn-lg">Cadastro</button>
         </a>
     </div>

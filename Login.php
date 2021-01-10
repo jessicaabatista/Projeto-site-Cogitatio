@@ -1,11 +1,14 @@
 <?php
-session_start();
+// arquivo de conexão com o banco de dados:
+include_once("database.php");
 
-$link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
+$Email = $_POST['email'];
+$Senha = $_POST['senha'];
 
-$Email = mysqli_real_escape_string($link, $_POST['usuario']);
+?>
 
-$Senha = mysqli_real_escape_string($link, $_POST['senha']);
+
+<?php
 
 if ($Email != "" && $Senha != "") {
 
@@ -79,4 +82,7 @@ if ($Email != "" && $Senha != "") {
   
         echo "Usuario invalido";
       }
+      
 }
+
+?>
