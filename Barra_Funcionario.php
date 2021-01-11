@@ -12,6 +12,9 @@
                     <a class="nav-link" href="Perfil_Funcionario.php">Alterar Dados</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="Marcar_Consulta.php">Marcar Consulta</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="logout.php">Sair</a>
                 </li>
             </ul>

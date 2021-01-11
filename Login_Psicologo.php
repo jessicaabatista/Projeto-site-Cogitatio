@@ -27,24 +27,30 @@ $P_Senha = $_POST['senha'];
 <div class="login-page">
   <div class="form">
     <p>Login ou senha incorretos</p>
-    <input type="button" value="Voltar" onClick="history.go(-1)"> 
+    <input type="button" value="Voltar" onClick="history.go(-1)">
     </form>
   </div>
 </div>
 
 <?php
-if (isset($_POST['Login'])){
+if (isset($_POST['Login'])) {
   session_start();
 
-    $sql_query = "SELECT count(*) AS cntUser FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
+  $sql_query = "SELECT count(*) AS cntUser FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
+  $result = mysqli_query($strcon, $sql_query);
+  $row = mysqli_fetch_array($result);
+  $count = $row['cntUser'];
+
+  if ($count > 0) {
+    $_SESSION["psicologo"] = "psicologologado";
+
+    $sql_query = "SELECT * FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
     $result = mysqli_query($strcon, $sql_query);
-    $row = mysqli_fetch_array($result);
-    $count = $row['cntUser'];
+    $dados = mysqli_fetch_array($result);
 
-    if ($count > 0) {
-      $_SESSION["psicologo"] = "psicologologado";
-      header('Location: inicial_psicologo.php');
-    } 
+    $_SESSION['id'] = $dados['id_psicologo'];
 
+    header('Location: inicial_psicologo.php');
+  }
 }
 ?>

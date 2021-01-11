@@ -53,6 +53,13 @@ if (isset($_POST['logar'])) {
 
     if ($count > 0) {
       $_SESSION["paciente"] = "pacientelogin";
+
+      $sql_query = "SELECT * FROM paciente WHERE email_paciente = '$P_Email' and senha_paciente = '$P_Senha'";
+      $result = mysqli_query($strcon, $sql_query);
+      $dados = mysqli_fetch_array($result);
+  
+      $_SESSION['id'] = $dados['id_paciente'];
+      
       header('Location: inicial_paciente.php');
     } else {
       echo "Usuario invalido";

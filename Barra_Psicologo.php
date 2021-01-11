@@ -9,6 +9,9 @@
                     <a class="nav-link" href="Inicial_Psicologo.php">Consultas</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="Marcar_Consulta.php">Marcar Consulta</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="Perfil_Psicologo.php">Alterar Dados</a>
                 </li>
                 <li class="nav-item">

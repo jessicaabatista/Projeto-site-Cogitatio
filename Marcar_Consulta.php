@@ -42,25 +42,39 @@ mysqli_close($link);
 <div class="form">
   <p>Marcar Horário</p>
   <form method="POST" action="Envia_Consulta.php">
-    <label>Data da Consulta</label>
+    <label>Data da Consulta:</label>
     <input name="data" required type="date" value="0000-00-00" />
-    <label>Horário da Consulta</label>
-    <input name="horario" required type="time" />
-
-    <select name="psicologo">
+    <label>Horário da Consulta:</label>
+    <select name="horario" require>
+      <option value="09">09:00</option>
+      <option value="10">10:00</option>
+      <option value="11">11:00</option>
+      <option value="12">12:00</option>
+      <option value="14">14:00</option>
+      <option value="15">15:00</option>
+      <option value="16">16:00</option>
+      <option value="17">17:00</option>
+      <option value="18">18:00</option>
+      <option value="19">19:00</option>
+      <option value="20">20:00</option>
+    </select>
+    <br>
+    <label>Psicologo:</label>
+    <select name="psicologo" require>
       <?php
       while ($listaPsicologo = mysqli_fetch_array($selectPsicologo)) {
-        echo '<option value="' . $listaPsicologo['id_psicologo'] . '"> ' . $listaPsicologo['nome_psicologo'] . ' <option/>';
+        echo '<option value="' . $listaPsicologo['id_psicologo'] . '"> ' . $listaPsicologo['nome_psicologo'] . ' </option>';
       }
       ?>
-    </select>
+    </select><br>
     <?php
     if (!isset($_SESSION['id_paciente'])) {
     ?>
+      <label>Paciente:</label>
       <select name="paciente">
       <?php
       while ($listaPaciente = mysqli_fetch_array($selectPaciente)) {
-        echo '<option value="' . $listaPaciente['id_paciente'] . '"> ' . $listaPaciente['nome_paciente'] . ' <option/>';
+        echo '<option value="' . $listaPaciente['id_paciente'] . '"> ' . $listaPaciente['nome_paciente'] . ' </option>';
       }
     }
       ?>

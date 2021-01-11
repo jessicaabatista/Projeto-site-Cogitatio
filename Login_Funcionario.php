@@ -43,6 +43,13 @@ if (isset($_POST['logar'])) {
 
     if ($count > 0) {
       $_SESSION["funcionario"] = "funcionariologado";
+
+      $sql_query = "SELECT * FROM funcionario WHERE email_funcionario = '$P_Email' and senha_funcionario = '$P_Senha'";
+      $result = mysqli_query($strcon, $sql_query);
+      $dados = mysqli_fetch_array($result);
+  
+      $_SESSION['id'] = $dados['id_funcionario'];
+      
       header('Location: inicial_funcionario.php');
     } 
 }

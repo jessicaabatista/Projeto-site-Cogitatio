@@ -2,10 +2,14 @@
 // retomando a sessão criada:
 session_start();
 
-if ($_SESSION["psicologo"] = "psicologologin"){
+if ($_SESSION["funcionario"] = "psicologologin") {
   header('Location: index.php');
- }
- 
+}
+
+$link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
+$sql = "SELECT * FROM consulta";
+$consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
+
 ?>
 
 <!DOCTYPE html>
@@ -35,16 +39,29 @@ if ($_SESSION["psicologo"] = "psicologologin"){
 <div class="login-page"></div>
 <div class="form2">
   <p>Consultas</p>
-  <table>
-    <td>Data</td>
-    <td>Horário</td>
-    <td>Paciente</td>
-    <td>Psicologo</td>
+  <table border="1" align="center">
+    <tr>
+      <th>Data da Consulta</th>
+      <th>Horário</th>
+      <th>Paciente</th>
+      <th>Psicologo</th>
+    </tr>
     <?php
     while ($agenda = mysqli_fetch_array($consultas)) {
-      echo '<tr>' . $agenda['data'] . '</tr>';
-      echo '<tr>' . $agenda['horario'] . '</tr>';
-      echo '<tr>' . $agenda['nome_psicologo'] . '</tr>';
+      echo '<tr><td>' . $agenda['data'] . '</td>';
+      echo '<td>' . $agenda['horario'] . '</td>';
+
+      $sql = "SELECT nome_paciente FROM paciente WHERE id_paciente = " . $agenda['fk_paciente'] . "";
+      $buscaNome = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
+      $nome = mysqli_fetch_array($buscaNome);
+
+      echo '<td>' . $nome['nome_paciente'] . '</td>';
+
+      $sql_psicologo = "SELECT nome_psicologo FROM psicologo WHERE id_psicologo = " . $agenda['fk_psicologo'] . "";
+      $buscaNome_psicologo = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
+      $nome_psicologo = mysqli_fetch_array($buscaNome);
+
+      echo '<td>' . $nome['nome_psicologo'] . '</td></tr>';
     }
     ?>
   </table>
