@@ -1,12 +1,9 @@
 <?php
-
-$link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
-
-$sql = "SELECT * FROM psicologo WHERE id_psicologo = " . $_SESSION['id_psicologo'] . "";
-
-$dados = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
-
-mysqli_close($link);
+// retomando a sessão criada:
+session_start();
+ if ($_SESSION["psicologo"] != "psicologologado"){
+  header('Location: index.php');
+ }
 
 ?>
 

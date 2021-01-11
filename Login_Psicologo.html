@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE-edge">
   <meta name="viewport" content="width = device-width, initial-scale = 1">
-  <title>Login Psicologo</title>
+  <title>Login Psicólogo</title>
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link href="Estilo.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-
 </html>
 
 <!-- Barra de Navegação -->
@@ -23,16 +20,17 @@
   </script>
 </div>
 
-<div class="login-page">
-  <div class="form">
-    <p>Login Psicologo</p>
-    <form method="post" action="Login_Psicologo.php">
-      <input type="text" id="email" name="email" placeholder="email" />
-      <input type="password" id="senha" name="senha" placeholder="Password" />
-      <input type="submit" value="logar" id="logar" name="logar">
-    </form>
-  </div>
+<div class="login-page"></div>
+<div class="form">
+  <p>Login Psicólogo</p>
+  <form method="POST" action="Login_Psicologo.php">
+    <input type="email" name="email" required placeholder="E-mail" />
+    <input type="password" minlength="8" name="senha" required placeholder="Senha" />
+    <input type="submit" value="Login" id="Login" name="Login">
+  </form>
 </div>
+</div>
+
 
 
 

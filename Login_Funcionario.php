@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<?php
+// arquivo de conexão com o banco de dados:
+include_once("database.php");
+$F_Email = $_POST['email'];
+$F_Senha = $_POST['senha'];
+?>
 
 <head>
   <meta charset="utf-8">
@@ -10,8 +14,6 @@
   <link href="Estilo.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-
-</html>
 
 <!-- Barra de Navegação -->
 <div id="nav-placeholder">
@@ -24,52 +26,24 @@
 
 <div class="login-page">
   <div class="form">
-    <p>Login Funcionario</p>
-    <form method="post">
-      <input type="text" id="usuario" name="usuario" placeholder="Username" />
-      <input type="password" id="senha" name="senha" placeholder="Password" />
-      <input type="submit" value="logar" id="logar" name="logar">
+    <p>Login ou senha incorretos</p>
+    <input type="button" value="Voltar" onClick="history.go(-1)"> 
     </form>
   </div>
 </div>
 
-
-
 <?php
-session_start();
-
 if (isset($_POST['logar'])) {
+  session_start();
 
-  $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
-
-  $F_Email = mysqli_real_escape_string($link, $_POST['usuario']);
-
-  $F_Senha = mysqli_real_escape_string($link, $_POST['senha']);
-
-  if ($F_Email != "" && $F_Senha != "") {
-    $sql_query = "SELECT count(*) AS cntUser FROM paciente WHERE email_paciente = '" . $F_Email . "' and senha_paciente = '" . $F_Senha . "'";
-
-    $result = mysqli_query($link, $sql_query);
-
+    $sql_query = "SELECT count(*) AS cntUser FROM funcionario WHERE email_funcionario = '$F_Email' and senha_funcionario = '$F_Senha'";
+    $result = mysqli_query($strcon, $sql_query);
     $row = mysqli_fetch_array($result);
-
     $count = $row['cntUser'];
 
     if ($count > 0) {
-
-      $sql = "SELECT id_funcionario FROM funcionario WHERE email_funcionario = '" . $F_Email . "' and senha_funcionario = '" . $F_Senha . "'";
-
-      $id = mysqli_query($link, $sql);
-
-      $_SESSION['usuarioLogado'] = $P_Email;
-      $_SESSION['id_funcionario'] = $id;
-
-      header('Location: Inicial_Funcionario.php');
-    } else {
-      header('Location: Login_Funcionario.php');
-
-      echo "Usuario invalido";
-    }
-  }
+      $_SESSION["funcionario"] = "funcionariologado";
+      header('Location: inicial_funcionario.php');
+    } 
 }
 ?>

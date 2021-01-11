@@ -33,14 +33,20 @@ $selectPsicologo = mysqli_query($link, $sqlPsicologo) or die ("Erro ao tentar gr
 <div class="form">
   <p>Cadastro Cliente</p>
   <form method="POST" action="Cadastro_Paciente_post.php">
-    <input type="text" name="email" required placeholder="E-mail" />
-    <input type="password" name="senha" required placeholder="Senha" />
-    <input type="password" required placeholder="Confirmar senha" />
-    <input type="text"  name="cpf" required placeholder="CPF" />
-    <input type="text" name="nome" required placeholder="Nome" />
-    <input type="tel" name="telefone" required placeholder="Telefone" />
-    <input type="text" name="endereco" required placeholder="Endereço" />
+    <input type="email" name="email" required placeholder="E-mail" />
+    <input type="password" minlength="8" name="senha" required placeholder="Senha" />
+    <input type="password" minlength="8" required placeholder="Confirmar senha" />
+
+    <input type="text" name="cpf" minlength="11" maxlength="11" required placeholder="CPF" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
+
+    <input type="text" name="nome" required placeholder="Nome" pattern="^[^-\s][a-zA-ZÀ-ú ]*"/>
+
+    <input type="tel" name="telefone" minlength="11" maxlength="11" required placeholder="Telefone" required placeholder="CPF" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
+
+    <input type="text" name="endereco" required placeholder="Endereço" pattern="^[^-\s][a-zA-ZÀ-ú ]*"/>
+
     <input id="date" name="data" required type="date" value="0000-00-00" placeholder="Data do Nascimento" />
+
     <input type="text" name="psicologo" required placeholder="psicologo" />
     
     <input type="submit" value="Cadastro" id="cadastro" name="cadastro">

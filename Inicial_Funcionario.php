@@ -1,13 +1,11 @@
 <?php
+// retomando a sessão criada:
+session_start();
 
-$link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
-
-$sql = "SELECT * FROM consulta c INNER JOIN psicologo p ON c.fk_psicologo = p.id_psicologo";
-
-$consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
-
-mysqli_close($link);
-
+if ($_SESSION["psicologo"] = "psicologologin"){
+  header('Location: index.php');
+ }
+ 
 ?>
 
 <!DOCTYPE html>
