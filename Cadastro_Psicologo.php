@@ -20,22 +20,30 @@ include_once("database.php");
   <p>Cadastro de Psicologo</p>
   <form method="POST" action="Cadastro_Psicologo_Post.php">
     <!-- sss -->
+    <label>CRP:</label><br>
     <input type="text" minlength="8" maxlength="12" required name="crp" placeholder="CRP" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
 
+    <label>CPF:</label><br>
     <input type="text" name="cpf" minlength="11" maxlength="11" required placeholder="CPF" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
 
+    <label>E-mail:</label><br>
     <input type="email" name="email" required placeholder="E-mail" />
 
+    <label>Senha:</label><br>
     <input type="password" minlength="8" name="senha" required placeholder="Senha" />
 
     <input type="password" minlength="8" required placeholder="Confirmar senha" />
 
-    <input type="text" name="nome" required placeholder="Nome" minlength="12" maxlength="100" pattern="^[^-\s][a-zA-ZÀ-ú ]*"/>
+    <label>Nome Completo:</label><br>
+    <input type="text" name="nome" required placeholder="Nome" minlength="12" maxlength="100" pattern="^[^-\s][a-zA-ZÀ-ú ]*" />
 
+    <label>Telefone:</label><br>
     <input type="tel" name="telefone" minlength="11" maxlength="11" required placeholder="Telefone" required placeholder="CPF" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
 
-    <input type="text" name="endereco" required placeholder="Endereço" pattern="^[^-\s][a-zA-ZÀ-ú ]*"/>
+    <label>Endereço:</label><br>
+    <input type="text" name="endereco" required placeholder="Endereço" pattern="^[^-\s][a-zA-ZÀ-ú ]*" />
 
+    <label>Informações profissionais:</label><br>
     <input type="textarea" maxlength="500" required name="descricao" placeholder="Descrição Profissional" />
     </select><br><br>
 
@@ -43,4 +51,3 @@ include_once("database.php");
   </form>
 </div>
 </div>
-

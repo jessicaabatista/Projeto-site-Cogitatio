@@ -32,7 +32,7 @@ $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informa�
     <?php
     while ($agenda = mysqli_fetch_array($consultas)) {
       echo '<tr><td>' . $agenda['data'] . '</td>';
-      echo '<td>' . $agenda['horario'] . '</td>';
+      echo '<td>' . $agenda['horario'] . ':00</td>';
 
       $sql = "SELECT nome_psicologo FROM psicologo WHERE id_psicologo = " . $agenda['fk_psicologo'] . "";
       $buscaNome = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");

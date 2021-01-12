@@ -16,13 +16,11 @@ session_destroy();
 <div class="form">
   <p>Login Psicólogo</p>
   <form method="POST" action="Login_Psicologo_Post.php">
+    <label>E-mail:</label><br>
     <input type="email" name="email" required placeholder="E-mail" />
+    <label>Senha:</label><br>
     <input type="password" minlength="8" name="senha" required placeholder="Senha" />
     <input type="submit" value="Login" id="Login" name="Login">
   </form>
 </div>
 </div>
-
-
-
-

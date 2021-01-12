@@ -1,15 +1,30 @@
 <?php
-session_start();
-if ($_SESSION["psicologo"] != "psicologologado") {
-  header('Location: logout.php');
-}
-include_once("Barra_Psicologo.php");
 
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
-$sql = "SELECT * FROM psicologo WHERE id_psicologo = " . $_SESSION['id'] . "";
+
+$P_Senha = $_POST['senha'];
+$P_Email = $_POST['email'];
+$P_Telefone = $_POST['telefone'];
+$P_Infos = $_POST['infos'];
+$P_ID = $_POST['id'];
+
+if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['infos']) == false) and (empty($_POST['telefone']) == false)) { //verifica se estão preenchidos
+
+  $sqlUpdate = "UPDATE psicologo SET `email_psicologo` = '$P_Email', `senha_psicologo` = '$P_Senha', `telefone_psicologo` = '$P_Telefone', `infos_psicologo` = '$P_Infos' WHERE id_psicologo = '$P_ID'";
+
+  mysqli_query($link, $sqlUpdate) or die("Erro ao tentar gravar as informações!");
+} else {
+  echo "Dados não preenchidos";
+}
+
+$sql = "SELECT * FROM psicologo WHERE id_psicologo = " . $P_ID . "";
+
 $dados = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
 
 ?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
   <meta charset="utf-8">
@@ -29,7 +44,7 @@ $dados = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informaçõe
       echo '<label>E-mail:</label><br><input name="email" value="' . $agenda['email_psicologo'] . '">';
       echo '<label>Telefone</label><br><input name="telefone" value="' . $agenda['telefone_psicologo'] . '">';
       echo '<label>Senha:</label><br><input name="infos" value="' . $agenda['infos_psicologo'] . '">';
-      echo '<input hidden name="id" value="' . $_SESSION['id'] . '">';
+      echo '<input hidden name="id" value="' . $P_ID . '">';
     }
     ?>
     <input type="submit" value="Alterar" id="Alterar" name="Alterar">

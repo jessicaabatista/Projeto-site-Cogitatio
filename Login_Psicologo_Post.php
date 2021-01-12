@@ -30,24 +30,24 @@ if (isset($_POST['Login'])) {
   session_start();
 
   if ($P_Email != "" && $P_Senha != "") {
-  $sql_query = "SELECT count(*) AS cntUser FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
-  $result = mysqli_query($strcon, $sql_query);
-  $row = mysqli_fetch_array($result);
-  $count = $row['cntUser'];
-
-  if ($count > 0) {
-    $_SESSION["psicologo"] = "psicologologado";
-
-    $sql_query = "SELECT * FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
+    $sql_query = "SELECT count(*) AS cntUser FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
     $result = mysqli_query($strcon, $sql_query);
-    $dados = mysqli_fetch_array($result);
+    $row = mysqli_fetch_array($result);
+    $count = $row['cntUser'];
 
-    $_SESSION['id'] = $dados['id_psicologo'];
+    if ($count > 0) {
+      $_SESSION["psicologo"] = "psicologologado";
 
-    header('Location: inicial_psicologo.php');
-  }else {
-    echo "Usuario invalido";
+      $sql_query = "SELECT * FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
+      $result = mysqli_query($strcon, $sql_query);
+      $dados = mysqli_fetch_array($result);
+
+      $_SESSION['id'] = $dados['id_psicologo'];
+
+      header('Location: inicial_psicologo.php');
+    } else {
+      echo "Usuario invalido";
+    }
   }
-}
 }
 ?>

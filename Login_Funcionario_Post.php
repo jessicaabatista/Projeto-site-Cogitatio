@@ -20,7 +20,7 @@ $F_Senha = $_POST['senha'];
 
 <div class="login-page">
   <div class="form">
-  <p>Login ou senha incorretos</p>
+    <p>Login ou senha incorretos</p>
     <input type="button" value="Voltar" class="btn btn-primary btn-lg" onClick="history.go(-1)">
   </div>
 </div>
@@ -29,21 +29,21 @@ $F_Senha = $_POST['senha'];
 if (isset($_POST['Login'])) {
   session_start();
 
-    $sql_query = "SELECT count(*) AS cntUser FROM funcionario WHERE email_funcionario = '$F_Email' and senha_funcionario = '$F_Senha'";
+  $sql_query = "SELECT count(*) AS cntUser FROM funcionario WHERE email_funcionario = '$F_Email' and senha_funcionario = '$F_Senha'";
+  $result = mysqli_query($strcon, $sql_query);
+  $row = mysqli_fetch_array($result);
+  $count = $row['cntUser'];
+
+  if ($count > 0) {
+    $_SESSION["funcionario"] = "funcionariologado";
+
+    $sql_query = "SELECT * FROM funcionario WHERE email_funcionario = '$P_Email' and senha_funcionario = '$P_Senha'";
     $result = mysqli_query($strcon, $sql_query);
-    $row = mysqli_fetch_array($result);
-    $count = $row['cntUser'];
+    $dados = mysqli_fetch_array($result);
 
-    if ($count > 0) {
-      $_SESSION["funcionario"] = "funcionariologado";
+    $_SESSION['id'] = $dados['id_funcionario'];
 
-      $sql_query = "SELECT * FROM funcionario WHERE email_funcionario = '$P_Email' and senha_funcionario = '$P_Senha'";
-      $result = mysqli_query($strcon, $sql_query);
-      $dados = mysqli_fetch_array($result);
-  
-      $_SESSION['id'] = $dados['id_funcionario'];
-      
-      header('Location: inicial_funcionario.php');
-    } 
+    header('Location: inicial_funcionario.php');
+  }
 }
 ?>

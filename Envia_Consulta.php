@@ -13,9 +13,9 @@ $resultado = mysqli_query($link, $busca) or die("Erro ao tentar gravar as inform
 $row = mysqli_fetch_array($resultado);
 $count = $row['cntUser'];
 
-if ($count > 0 || $data <= date('Y/m/d')) {
-
+if ($count > 0) {
 ?>
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
@@ -29,7 +29,7 @@ if ($count > 0 || $data <= date('Y/m/d')) {
   <div class="login-page"></div>
   <div class="form">
     <p>Horário indisponivel!<br> Por favor tente marcar novamente.</p>
-    <input type="button" value="Voltar" class="btn btn-primary btn-lg"  onClick="history.go(-1)">
+    <input type="button" value="Voltar" class="btn btn-primary btn-lg" onClick="history.go(-1)">
   </div>
   </div>
 
@@ -50,7 +50,6 @@ if ($count > 0 || $data <= date('Y/m/d')) {
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="Estilo.css" rel="stylesheet">
   </head>
-
 
   <div class="login-page"></div>
   <div class="form">

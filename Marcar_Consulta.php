@@ -24,7 +24,7 @@ mysqli_close($link);
   <form method="POST" action="Envia_Consulta.php">
     <label>Data da Consulta:</label>
     <input name="data" required type="date" value="0000-00-00" />
-    <label>Horário da Consulta:</label>
+    <label>Horário da Consulta:</label><br>
     <select name="horario" require>
       <option value="09">09:00</option>
       <option value="10">10:00</option>
@@ -38,7 +38,7 @@ mysqli_close($link);
       <option value="19">19:00</option>
       <option value="20">20:00</option>
     </select>
-    <br>
+    <br><br>
     <label>Psicologo(a):</label>
     <select name="psicologo" require>
       <?php
@@ -46,20 +46,16 @@ mysqli_close($link);
         echo '<option value="' . $listaPsicologo['id_psicologo'] . '"> ' . $listaPsicologo['nome_psicologo'] . ' </option>';
       }
       ?>
-    </select><br>
-    <?php
-    if (!isset($_SESSION['id_paciente'])) {
-    ?>
-      <label>Paciente:</label>
-      <select name="paciente">
+    </select><br><br>
+    <label>Paciente:</label>
+    <select name="paciente">
       <?php
       while ($listaPaciente = mysqli_fetch_array($selectPaciente)) {
         echo '<option value="' . $listaPaciente['id_paciente'] . '"> ' . $listaPaciente['nome_paciente'] . ' </option>';
       }
-    }
       ?>
-      </select>
-      <input type="submit" value="Cadastro" id="cadastro" name="cadastro">
+    </select><br><br>
+    <input type="submit" value="Cadastro" id="cadastro" name="cadastro">
   </form>
 </div>
 </div>

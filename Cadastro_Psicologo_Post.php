@@ -36,10 +36,9 @@ if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and 
 
   $sql = "INSERT INTO psicologo (email_psicologo, senha_psicologo, cpf_psicologo, crp_psicologo, nome_psicologo, telefone_psicologo, endereco_psicologo, infos_psicologo) values ('$P_Email', '$P_Senha', '$P_Cpf', '$P_Crp',  '$P_Nome', '$P_Telefone', '$P_Endereco', '$P_Descricao')";
 
-  mysqli_query($strcon, $sql) or die ("Erro ao tentar gravar as informações! Algum dado pode já estar cadastrado ou incompleto");
+  mysqli_query($strcon, $sql) or die("Erro ao tentar gravar as informações! Algum dado pode já estar cadastrado ou incompleto");
 
   echo "Cadastrado feito com sucesso";
-
 } else {
   echo "Dados não preenchidos";
 }
