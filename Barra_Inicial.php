@@ -9,16 +9,16 @@
                     <a class="nav-link" href="index.php">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Login_Funcionario.html">Funcionario</a>
+                    <a class="nav-link" href="Login_Funcionario.php">Funcionario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Cadastro_Funcionario.html">Funcionario Cadastro</a>
+                    <a class="nav-link" href="Cadastro_Funcionario.php">Funcionario Cadastro</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="login_psicologo.html">Psicologo</a>
+                    <a class="nav-link" href="login_psicologo.php">Psicologo</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="Cadastro_Psicologo.html">Psicologo Cadastro</a>
+                    <a class="nav-link" href="Cadastro_Psicologo.php">Psicologo Cadastro</a>
                 </li>
             </ul>
         </div>

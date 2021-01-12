@@ -6,7 +6,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Inicio</a>
+                    <a class="nav-link" href="Inicial_Funcionario.php">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="Perfil_Funcionario.php">Alterar Dados</a>

@@ -1,42 +1,22 @@
 <?php
-
+include_once("Barra_Inicial.php");
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
-
 $sqlPsicologo = "SELECT nome_psicologo, id_psicologo FROM psicologo";
-
 $selectPsicologo = mysqli_query($link, $sqlPsicologo) or die("Erro ao tentar buscar as informações!");
-
 $sqlPaciente = "SELECT nome_paciente, id_paciente FROM paciente";
-
 $selectPaciente = mysqli_query($link, $sqlPaciente) or die("Erro ao tentar buscar as informações!");
-
 mysqli_close($link);
 
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE-edge">
-  <meta name="viewport" content="width = device-width, initial-scale = 1">
   <title>Marcar Consulta</title>
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link href="Estilo.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-
-</html>
-
-<!-- Barra de Navegação -->
-<div id="nav-placeholder">
-</div>
-<script>
-  $(function() {
-    $("#nav-placeholder").load("Barra_Paciente.php");
-  });
-</script>
 
 <div class="login-page"></div>
 <div class="form">
@@ -59,7 +39,7 @@ mysqli_close($link);
       <option value="20">20:00</option>
     </select>
     <br>
-    <label>Psicologo:</label>
+    <label>Psicologo(a):</label>
     <select name="psicologo" require>
       <?php
       while ($listaPsicologo = mysqli_fetch_array($selectPsicologo)) {

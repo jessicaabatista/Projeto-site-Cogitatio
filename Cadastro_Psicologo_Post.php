@@ -5,14 +5,14 @@ session_destroy();
 // arquivo de conexão com o banco de dados:
 include_once("database.php");
 
-$P_Email = $_POST['email'];
+$P_Crp   = $_POST['crp'];
 $P_Senha = $_POST['senha'];
 $P_Cpf   = $_POST['cpf'];
 $P_Nome  = $_POST['nome'];
+$P_Email = $_POST['email'];
 $P_Telefone = $_POST['telefone'];
 $P_Endereco = $_POST['endereco'];
-$P_Data = $_POST['data'];
-$P_Psicologo = $_POST['psicologo'];
+$P_Descricao = $_POST['descricao'];
 ?>
 
 <head>
@@ -32,15 +32,15 @@ $P_Psicologo = $_POST['psicologo'];
 </div>
 
 <?php
-if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['cpf']) == false) and (empty($_POST['nome']) == false) and (empty($_POST['telefone']) == false) and (empty($_POST['endereco']) == false) and (empty($_POST['data']) == false) and (empty($_POST['psicologo']) == false)) { //verifica se estão preenchidos
- 
-  $sql = "INSERT INTO paciente (email_paciente, senha_paciente, cpf_paciente, nome_paciente, telefone_paciente, endereco_paciente, data_nasc_paciente, fk_psicologo) values ('$P_Email', '$P_Senha', '$P_Cpf', '$P_Nome', '$P_Telefone', '$P_Endereco', '$P_Data', '$P_Psicologo')";
+if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['cpf']) == false) and (empty($_POST['crp']) == false) and (empty($_POST['nome']) == false) and (empty($_POST['endereco']) == false) and (empty($_POST['telefone']) == false) and (empty($_POST['descricao']) == false)) { //verifica se estão preenchidos
+
+  $sql = "INSERT INTO psicologo (email_psicologo, senha_psicologo, cpf_psicologo, crp_psicologo, nome_psicologo, telefone_psicologo, endereco_psicologo, infos_psicologo) values ('$P_Email', '$P_Senha', '$P_Cpf', '$P_Crp',  '$P_Nome', '$P_Telefone', '$P_Endereco', '$P_Descricao')";
 
   mysqli_query($strcon, $sql) or die ("Erro ao tentar gravar as informações! Algum dado pode já estar cadastrado ou incompleto");
 
   echo "Cadastrado feito com sucesso";
+
 } else {
   echo "Dados não preenchidos";
 }
-
 ?>

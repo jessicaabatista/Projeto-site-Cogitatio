@@ -1,33 +1,20 @@
 <?php
+include_once("Barra_Inicial.php");
+session_start();
+session_destroy();
 
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
-
 $sqlPsicologo = "SELECT nome_psicologo, id_psicologo FROM psicologo";
-
 $selectPsicologo = mysqli_query($link, $sqlPsicologo) or die ("Erro ao tentar gravar as informações!");
-
 ?>
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE-edge">
-  <meta name="viewport" content="width = device-width, initial-scale = 1">
-  <title>Cadastro</title>
+  <title>Cadastro Cliente</title>
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link href="Estilo.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <link href="Estilo.css" rel="stylesheet">t>
 </head>
-
-
-
-<!-- Barra de Navegação -->
-<div id="nav-placeholder">
-  <script>
-    $(function() {
-      $("#nav-placeholder").load("Barra_Inicial.php");
-    });
-  </script>
-</div>
 
 <div class="login-page"></div>
 <div class="form">
@@ -39,7 +26,7 @@ $selectPsicologo = mysqli_query($link, $sqlPsicologo) or die ("Erro ao tentar gr
 
     <input type="text" name="cpf" minlength="11" maxlength="11" required placeholder="CPF" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
 
-    <input type="text" name="nome" required placeholder="Nome" pattern="^[^-\s][a-zA-ZÀ-ú ]*"/>
+    <input type="text" name="nome" required placeholder="Nome" minlength="12" maxlength="100"  pattern="^[^-\s][a-zA-ZÀ-ú ]*"/>
 
     <input type="tel" name="telefone" minlength="11" maxlength="11" required placeholder="Telefone" required placeholder="CPF" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
 

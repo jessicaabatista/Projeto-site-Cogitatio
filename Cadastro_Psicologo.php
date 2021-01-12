@@ -1,59 +1,46 @@
 <?php
+include_once("Barra_Inicial.php");
+session_start();
+session_destroy();
 // arquivo de conexão com o banco de dados:
 include_once("database.php");
-
-$P_Crp   = $_POST['crp'];
-$P_Senha = $_POST['senha'];
-$P_Cpf   = $_POST['cpf'];
-$P_Nome  = $_POST['nome'];
-$P_Email = $_POST['email'];
-$P_Telefone = $_POST['telefone'];
-$P_Endereco = $_POST['endereco'];
-$P_Descricao = $_POST['descricao'];
 
 ?>
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE-edge">
-  <meta name="viewport" content="width = device-width, initial-scale = 1">
-  <title>Cadastro</title>
+  <title>Cadastro Psicologo</title>
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link href="Estilo.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
-
-
-
-<!-- Barra de Navegação -->
-<div id="nav-placeholder">
-  <script>
-    $(function() {
-      $("#nav-placeholder").load("Barra_Inicial.php");
-    });
-  </script>
-</div>
 
 <div class="login-page"></div>
 <div class="form">
-  <table border="1" style='width:20%'>
-    <tr>
-    </tr>
+  <p>Cadastro de Psicologo</p>
+  <form method="POST" action="Cadastro_Psicologo_Post.php">
+    <!-- sss -->
+    <input type="text" minlength="8" maxlength="12" required name="crp" placeholder="CRP" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
+
+    <input type="text" name="cpf" minlength="11" maxlength="11" required placeholder="CPF" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
+
+    <input type="email" name="email" required placeholder="E-mail" />
+
+    <input type="password" minlength="8" name="senha" required placeholder="Senha" />
+
+    <input type="password" minlength="8" required placeholder="Confirmar senha" />
+
+    <input type="text" name="nome" required placeholder="Nome" minlength="12" maxlength="100" pattern="^[^-\s][a-zA-ZÀ-ú ]*"/>
+
+    <input type="tel" name="telefone" minlength="11" maxlength="11" required placeholder="Telefone" required placeholder="CPF" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
+
+    <input type="text" name="endereco" required placeholder="Endereço" pattern="^[^-\s][a-zA-ZÀ-ú ]*"/>
+
+    <input type="textarea" maxlength="500" required name="descricao" placeholder="Descrição Profissional" />
+    </select><br><br>
+
+    <input type="submit" value="Cadastro" id="cadastro" name="cadastro">
+  </form>
 </div>
 </div>
 
-<?php
-
-
-if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['cpf']) == false) and (empty($_POST['crp']) == false) and (empty($_POST['nome']) == false) and (empty($_POST['endereco']) == false) and (empty($_POST['telefone']) == false) and (empty($_POST['descricao']) == false)) { //verifica se estão preenchidos
-
-  $sql = "INSERT INTO psicologo (email_psicologo, senha_psicologo, cpf_psicologo, crp_psicologo, nome_psicologo, telefone_psicologo, endereco_psicologo, infos_psicologo) values ('$P_Email', '$P_Senha', '$P_Cpf', '$P_Crp',  '$P_Nome', '$P_Telefone', '$P_Endereco', '$P_Descricao')";
-
-  mysqli_query($strcon, $sql) or die ("Erro ao tentar gravar as informações!");
-
-  echo "Cadastrado feito com sucesso";
-} else {
-  echo "Dados não preenchidos";
-}
-
-?>
