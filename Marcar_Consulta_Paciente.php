@@ -4,9 +4,6 @@ $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 
 session_start();
 
-$sqlPaciente = "SELECT nome_paciente, id_paciente FROM paciente";
-$selectPaciente = mysqli_query($link, $sqlPaciente) or die("Erro ao tentar buscar as informações!");
-
 ?>
 
 <head>
@@ -20,9 +17,11 @@ $selectPaciente = mysqli_query($link, $sqlPaciente) or die("Erro ao tentar busca
 <div class="login-page"></div>
 <div class="form">
   <p>Marcar Horário</p>
-  <form method="POST" action="Marcar_Consulta_Post.php">
+  <form method="POST" action="Marcar_Consulta_Paciente_Post.php">
+
     <label>Data da Consulta:</label>
     <input name="data" required type="date" value="0000-00-00" />
+
     <label>Horário da Consulta:</label><br>
     <select name="horario" require>
       <option value="09">09:00</option>
@@ -36,16 +35,12 @@ $selectPaciente = mysqli_query($link, $sqlPaciente) or die("Erro ao tentar busca
       <option value="18">18:00</option>
       <option value="19">19:00</option>
       <option value="20">20:00</option>
-    </select>
-    <br><br>
-    <label>Paciente:</label>
-    <select name="paciente">
-      <?php
-      while ($listaPaciente = mysqli_fetch_array($selectPaciente)) {
-        echo '<option value="' . $listaPaciente['id_paciente'] . '"> ' . $listaPaciente['nome_paciente'] . ' </option>';
-      }
-      ?>
     </select><br><br>
+
+    <?php
+    echo '<input hidden name="id" value="' . $_SESSION['id'] . '">';
+    ?>
+
     <input type="submit" value="Cadastro" id="cadastro" name="cadastro">
   </form>
 </div>

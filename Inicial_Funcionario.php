@@ -46,7 +46,7 @@ $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informa�
       $buscaNome_psicologo = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
       $nome_psicologo = mysqli_fetch_array($buscaNome);
 
-      echo '<td>' . $nome['nome_psicologo'] . '</td></tr>';
+      echo '<td>' . $nome_psicologo['nome_psicologo'] . '</td></tr>';
     }
     ?>
   </table>

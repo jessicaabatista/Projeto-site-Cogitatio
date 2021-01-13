@@ -2,7 +2,8 @@
 include_once("Barra_Inicial.php");
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 
-$psicologo = $_POST['psicologo'];
+session_start();
+
 $data = $_POST['data'];
 $horario   = $_POST['horario'];
 $paciente  = $_POST['paciente'];
@@ -35,8 +36,12 @@ if ($count > 0) {
 
 <?php
 
-} else if ((empty($_POST['psicologo']) == false) and (empty($_POST['data']) == false) and (empty($_POST['horario']) == false) and (empty($_POST['paciente']) == false)) { //verifica se estão preenchidos
+} else if ((empty($_POST['data']) == false) and (empty($_POST['horario']) == false) and (empty($_POST['paciente']) == false)) { //verifica se estão preenchidos
 
+  $sqlPsicologo = "SELECT psi.id_psicologo FROM psicologo psi
+  INNER JOIN paciente p ON p.fk_psicologo = psi.id_psicologo AND p.id_paciente = ". $paciente ."";
+  $psicologo = mysqli_query($link, $sqlPsicologo) or die("Erro ao tentar gravar as informações!");
+  
   $sql = "INSERT INTO consulta (`data`, `horario`, `fk_psicologo`, `fk_paciente`) values ('$data', '$horario', '$psicologo', '$paciente')";
 
   mysqli_query($link, $sql) or die("Erro ao tentar gravar as informações!");
@@ -54,8 +59,7 @@ if ($count > 0) {
   <div class="login-page"></div>
   <div class="form">
     <p>Horário agendado com sucesso!</p>
-    <a href="/Marcar_Consulta.php">
-      < Voltar para página anterior</a>
+    <input type="button" value="Voltar" class="btn btn-primary btn-lg" onClick="history.go(-1)">
   </div>
   </div>
 

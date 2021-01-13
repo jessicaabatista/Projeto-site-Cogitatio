@@ -12,7 +12,7 @@
                     <a class="nav-link" href="Perfil_Paciente.php">Alterar Dados</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Marcar_Consulta.php">Marcar Consulta</a>
+                    <a class="nav-link" href="Marcar_Consulta_Paciente.php">Marcar Consulta</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="logout.php">Sair</a>
