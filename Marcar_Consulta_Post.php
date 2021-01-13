@@ -1,5 +1,13 @@
 <?php
-include_once("Barra_Inicial.php");
+// carrega a barra do paciente
+include_once("Barra_Paciente.php");
+// retomando a sessão criada
+session_start();
+// checa se o usuário logado é um paciente, caso contrário, derireciona para o logout
+if ($_SESSION["paciente"] != "pacientelogado") {
+  header('Location: logout.php');
+}
+
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 
 session_start();
@@ -23,11 +31,9 @@ if ($count > 0 || $today >= $dataConsulta) {
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
-
     <title>Marcar Consulta</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="Estilo.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   </head>
 
   <div class="login-page"></div>

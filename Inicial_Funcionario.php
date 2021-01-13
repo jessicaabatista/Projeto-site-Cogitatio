@@ -1,10 +1,11 @@
 <?php
+// carrega a barra do Funcionario
 include_once("Barra_Funcionario.php");
-// retomando a sessão criada:
+// retomando a sessão criada
 session_start();
-
+// checa se o usuário logado é um Funcionario, caso contrário, derireciona para o logout
 if ($_SESSION["funcionario"] != "funcionariologado") {
-  header('Location: index.php');
+  header('Location: logout.php');
 }
 
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
@@ -64,6 +65,7 @@ $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informa�
   <form method="POST" action="Deletar_Consulta.php">
     <p>Digite o código da consulta que deseja excluir:</p>
     <input type="number" name="consulta" />
+    <input type="submit" value="Excluir" id="Excluir" name="Excluir">
   </form>
 </div>
 </div>

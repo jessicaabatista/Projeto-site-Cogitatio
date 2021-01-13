@@ -1,15 +1,17 @@
 <?php
+// carrega a barra do paciente
+include_once("Barra_Paciente.php");
+// retomando a sessão criada
 session_start();
+// checa se o usuário logado é um paciente, caso contrário, derireciona para o logout
 if ($_SESSION["paciente"] != "pacientelogado") {
   header('Location: logout.php');
 }
-include_once("Barra_Paciente.php");
 
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 $sql = "SELECT * FROM paciente WHERE id_paciente = " . $_SESSION['id'] . "";
 $dados = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
 mysqli_close($link);
-
 ?>
 
 <head>

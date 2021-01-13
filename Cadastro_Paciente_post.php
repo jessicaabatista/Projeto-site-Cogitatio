@@ -13,6 +13,7 @@ $P_Telefone = $_POST['telefone'];
 $P_Endereco = $_POST['endereco'];
 $P_Data = $_POST['data'];
 $P_Psicologo = $_POST['psicologo'];
+
 ?>
 
 <head>

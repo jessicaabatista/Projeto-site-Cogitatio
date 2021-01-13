@@ -1,8 +1,14 @@
 <?php
+// carrega a barra do paciente
+include_once("Barra_Paciente.php");
+// retomando a sessão criada
+session_start();
+// checa se o usuário logado é um paciente, caso contrário, derireciona para o logout
+if ($_SESSION["paciente"] != "pacientelogado") {
+  header('Location: logout.php');
+}
 
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
-
-session_start();
 
 $P_Senha = $_POST['senha'];
 $P_Email = $_POST['email'];
@@ -55,7 +61,7 @@ $dados = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informaçõe
     <form method="POST" action="Altera_Perfil_Paciente.php">
         <?php
         while ($perfil = mysqli_fetch_array($dados)) {
-            echo '<label>Endereço:</label><br><input type="text" name="endereco" required pattern="^[^-\s][a-zA-ZÀ-ú ]* value="' . $perfil['endereco_paciente'] . '" placeholder="' . $perfil['endereco_paciente'] . '">';
+            echo '<label>Endereço:</label><br><input type="text" name="endereco" required pattern="^[^-\s][a-zA-ZÀ-ú ]*" value="' . $perfil['endereco_paciente'] . '" placeholder="' . $perfil['endereco_paciente'] . '">';
 
             echo '<label>E-mail:</label><br><input type="email" name="email" required value="' . $perfil['email_paciente'] . '" placeholder="' . $perfil['email_paciente'] . '">';
 
