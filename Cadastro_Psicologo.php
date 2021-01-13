@@ -38,7 +38,7 @@ include_once("database.php");
     <input type="text" name="nome" required placeholder="Nome" minlength="12" maxlength="100" pattern="^[^-\s][a-zA-ZÀ-ú ]*" />
 
     <label>Telefone:</label><br>
-    <input type="tel" name="telefone" minlength="11" maxlength="11" required placeholder="Telefone" required placeholder="CPF" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
+    <input type="tel" name="telefone" minlength="11" maxlength="11" required placeholder="Telefone" placeholder="Telefone" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
 
     <label>Endereço:</label><br>
     <input type="text" name="endereco" required placeholder="Endereço" pattern="^[^-\s][a-zA-ZÀ-ú ]*" />

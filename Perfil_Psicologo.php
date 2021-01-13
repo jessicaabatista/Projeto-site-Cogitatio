@@ -25,10 +25,14 @@ $dados = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informaçõe
   <form method="POST" action="Altera_Perfil_Psicologo.php">
     <?php
     while ($perfil = mysqli_fetch_array($dados)) {
-      echo '<label>Nome:</label><br><input name="nome" value="' . $agenda['nome_psicologo'] . ' placeholder="">';
-      echo '<label>E-mail:</label><br><input name="email" value="' . $agenda['email_psicologo'] . '">';
-      echo '<label>Telefone</label><br><input name="telefone" value="' . $agenda['telefone_psicologo'] . '">';
-      echo '<label>Senha:</label><br><input name="infos" value="' . $agenda['infos_psicologo'] . '">';
+      echo '<label>E-mail:</label><br><input required name="email" value="' . $agenda['email_psicologo'] . '">';
+
+      echo '<label>Senha:</label><br><input type="password" minlength="8" name="senha" required value="' . $agenda['senha_psicologo'] . '" placeholder="' . $agenda['senha_psicologo'] . '">';
+
+      echo '<label>Telefone</label><br><input type="tel" name="telefone" minlength="11" maxlength="11" required placeholder="' . $agenda['telefone_psicologo'] . '" value="' . $agenda['telefone_psicologo'] . '">';
+
+      echo '<label>Descrição Profissional:</label><br><input type="textarea" maxlength="500" required name="descricao" placeholder="' . $agenda['infos_psicologo'] . '" value="' . $agenda['infos_psicologo'] . '">';
+      
       echo '<input hidden name="id" value="' . $_SESSION['id'] . '">';
     }
     ?>

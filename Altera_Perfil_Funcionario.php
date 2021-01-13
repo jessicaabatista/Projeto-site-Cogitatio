@@ -42,10 +42,14 @@ $dados = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informaçõe
   <form method="POST" action="Altera_Perfil_Funcionario.php">
     <?php
     while ($perfil = mysqli_fetch_array($dados)) {
-      echo '<label>E-mail:</label><br><input name=""email value="' . $agenda['email_funcionario'] . '">';
-      echo '<label>Senha:</label><br><input name="senha" value="' . $agenda['senha_funcionario'] . '">';
-      echo '<label>Telefone:</label><br><input name="telefone" value="' . $agenda['telefone_funcionario'] . '">';
-      echo '<label>Endereço:</label><br><input name="endereco" value="' . $agenda['endereco_funcionario'] . '">';
+      echo '<label>E-mail:</label><br><input type="email" name="email" required placeholder="' . $agenda['email_funcionario'] . '" value="' . $agenda['email_funcionario'] . '">';
+
+      echo '<label>Senha:</label><br><input type="password" minlength="8" name="senha" required placeholder="' . $agenda['senha_funcionario'] . '" value="' . $agenda['senha_funcionario'] . '">';
+
+      echo '<label>Telefone:</label><br><input type="tel" name="telefone" minlength="11" maxlength="11" required placeholder="' . $agenda['telefone_funcionario'] . '" value="' . $agenda['telefone_funcionario'] . '">';
+
+      echo '<label>Endereço:</label><br><input type="text" name="endereco" required placeholder="' . $agenda['endereco_funcionario'] . '" pattern="^[^-\s][a-zA-ZÀ-ú ]*" value="' . $agenda['endereco_funcionario'] . '">';
+
       echo '<input hidden name="id" value="' . $P_ID . '">';
     }
     ?>
