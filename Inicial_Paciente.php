@@ -69,7 +69,7 @@ if ($teste != null){
 <div class="form2">
 
   <?php
-  $sqlMensagem = "SELECT * FROM avisos WHERE fk_paciente = " . $_SESSION['id'] . " ORDER BY id_aviso LIMIT 5";
+  $sqlMensagem = "SELECT * FROM avisos WHERE fk_paciente = " . $_SESSION['id'] . " ORDER BY id_aviso DESC LIMIT 5";
   $mensagem = mysqli_query($link, $sqlMensagem) or die("Erro ao tentar buscar as informações!");
   $teste = mysqli_fetch_array($mensagem);
   
@@ -83,7 +83,8 @@ if ($teste != null){
       <th>Mensagem</th>
     </tr>
     <?php
-    while ($aviso = mysqli_fetch_array($mensagem)) {
+
+    while ($aviso = mysqli_fetch_row($mensagem)) {
       echo '<tr><td>' . $aviso['id_aviso'] . '</td>';
       echo '<td>' . $aviso['mensagem'] . '</td></tr>';
     }
@@ -93,6 +94,7 @@ if ($teste != null){
   }else{
     echo '<caption>Nenhum aviso para visualizar no momento.</caption><br>';
   }
+
   ?>
 </div>
 

@@ -9,7 +9,7 @@ if ($_SESSION["funcionario"] != "funcionariologado") {
 }
 
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
-$sql = "SELECT * FROM consulta";
+$sql = "SELECT *, count(id_consulta) AS cntUser FROM consulta";
 $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
 
 $teste = mysqli_fetch_array($consultas);
