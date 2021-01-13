@@ -57,12 +57,13 @@ $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informa√
 <div class="form2">
 
   <?php
-  $sqlMensagem = "SELECT * FROM avisos WHERE fk_paciente = " . $_SESSION['id'] . "";
+  $sqlMensagem = "SELECT * FROM avisos WHERE fk_paciente = " . $_SESSION['id'] . " ORDER BY id_aviso LIMIT 5";
   $mensagem = mysqli_query($link, $sqlMensagem) or die("Erro ao tentar buscar as informa√ß√µes!");
   $avisos = mysqli_fetch_array($mensagem);
   ?>
 
   <table border="1" align="center">
+  <caption>Avisos</caption>
     <tr>
       <th>C√≥digo</th>
       <th>Mensagem</th>
@@ -70,7 +71,7 @@ $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informa√
     <?php
     while ($aviso = mysqli_fetch_array($avisos)) {
       echo '<tr><td>' . $aviso['id_aviso'] . '</td>';
-      echo '<td>' . $aviso['mensagem'] . '</td>';
+      echo '<td>' . $aviso['mensagem'] . '</td></tr>';
     }
     ?>
   </table>
