@@ -10,6 +10,10 @@ if ($_SESSION["psicologo"] != "psicologologado") {
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 $sql = "SELECT * FROM consulta WHERE fk_psicologo = " . $_SESSION['id'] . "";
 $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
+
+$teste = mysqli_fetch_array($consultas);
+  
+if ($teste != null){
 ?>
 
 <head>
@@ -51,13 +55,18 @@ $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informa�
     }
     ?>
   </table>
+  <?php
+  }else{
+    echo '<caption>Nenhuma consulta para visualizar no momento.</caption><br>';
+  }
+  ?>
 </div>
 
 <div class="form2">
   <form method="POST" action="Deletar_Consulta.php">
     <p>Digite o código da consulta que deseja excluir:</p>
     <input type="number" name="consulta" />
-    <input type="submit" value="Excluir" id="Excluir" name="Excluir">
+    <input type="submit" value="Excluir" id="excluir" name="excluir">
   </form>
 </div>
 </div>

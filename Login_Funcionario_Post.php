@@ -6,7 +6,7 @@ session_destroy();
 // arquivo de conexão com o banco de dados:
 include_once("database.php");
 
-$F_Email = $_POST['email'];
+$F_Cpf = $_POST['cpf'];
 $F_Senha = $_POST['senha'];
 ?>
 
@@ -29,7 +29,7 @@ $F_Senha = $_POST['senha'];
 if (isset($_POST['Login'])) {
   session_start();
 
-  $sql_query = "SELECT count(*) AS cntUser FROM funcionario WHERE email_funcionario = '$F_Email' and senha_funcionario = '$F_Senha'";
+  $sql_query = "SELECT count(*) AS cntUser FROM funcionario WHERE cpf_funcionario = '$F_Cpf' and senha_funcionario = '$F_Senha'";
   $result = mysqli_query($strcon, $sql_query);
   $row = mysqli_fetch_array($result);
   $count = $row['cntUser'];
@@ -38,7 +38,7 @@ if (isset($_POST['Login'])) {
     $_SESSION["funcionario"] = "funcionariologado";
     $_SESSION["geral"] = "funcionariologado";
 
-    $sql_query = "SELECT * FROM funcionario WHERE email_funcionario = '$P_Email' and senha_funcionario = '$P_Senha'";
+    $sql_query = "SELECT * FROM funcionario WHERE cpf_funcionario = '$P_Cpf' and senha_funcionario = '$P_Senha'";
     $result = mysqli_query($strcon, $sql_query);
     $dados = mysqli_fetch_array($result);
 

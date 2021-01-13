@@ -6,7 +6,7 @@ session_destroy();
 // arquivo de conexão com o banco de dados:
 include_once("database.php");
 
-$P_Email = $_POST['email'];
+$P_Cpf = $_POST['cpf'];
 $P_Senha = $_POST['senha'];
 ?>
 
@@ -29,8 +29,8 @@ $P_Senha = $_POST['senha'];
 if (isset($_POST['Login'])) {
   session_start();
 
-  if ($P_Email != "" && $P_Senha != "") {
-    $sql_query = "SELECT count(*) AS cntUser FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
+  if ($P_Cpf != "" && $P_Senha != "") {
+    $sql_query = "SELECT count(*) AS cntUser FROM psicologo WHERE cpf_psicologo = '$P_Cpf' and senha_psicologo = '$P_Senha'";
     $result = mysqli_query($strcon, $sql_query);
     $row = mysqli_fetch_array($result);
     $count = $row['cntUser'];
@@ -38,7 +38,7 @@ if (isset($_POST['Login'])) {
     if ($count > 0) {
       $_SESSION["psicologo"] = "psicologologado";
       $_SESSION["geral"] = "psicologologado";
-      $sql_query = "SELECT * FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
+      $sql_query = "SELECT * FROM psicologo WHERE cpf_psicologo = '$P_Cpf' and senha_psicologo = '$P_Senha'";
       $result = mysqli_query($strcon, $sql_query);
       $dados = mysqli_fetch_array($result);
 

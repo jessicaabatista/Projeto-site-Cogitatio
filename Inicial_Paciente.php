@@ -9,8 +9,13 @@ if ($_SESSION["paciente"] != "pacientelogado") {
 }
 
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
+
 $sql = "SELECT * FROM consulta WHERE fk_paciente = " . $_SESSION['id'] . "";
 $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
+
+$teste = mysqli_fetch_array($consultas);
+  
+if ($teste != null){
 ?>
 
 <head>
@@ -52,6 +57,12 @@ $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informa�
     }
     ?>
   </table>
+
+  <?php
+  }else{
+    echo '<caption>Nenhuma consulta para visualizar no momento.</caption><br>';
+  }
+  ?>
 </div>
 <br>
 <br>
@@ -60,22 +71,29 @@ $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informa�
   <?php
   $sqlMensagem = "SELECT * FROM avisos WHERE fk_paciente = " . $_SESSION['id'] . " ORDER BY id_aviso LIMIT 5";
   $mensagem = mysqli_query($link, $sqlMensagem) or die("Erro ao tentar buscar as informações!");
-  $avisos = mysqli_fetch_array($mensagem);
+  $teste = mysqli_fetch_array($mensagem);
+  
+  if ($teste != null){
   ?>
 
+  <caption>Avisos</caption><br>
   <table border="1" align="center">
-  <caption>Avisos</caption>
     <tr>
       <th>Código</th>
       <th>Mensagem</th>
     </tr>
     <?php
-    while ($aviso = mysqli_fetch_array($avisos)) {
+    while ($aviso = mysqli_fetch_array($mensagem)) {
       echo '<tr><td>' . $aviso['id_aviso'] . '</td>';
       echo '<td>' . $aviso['mensagem'] . '</td></tr>';
     }
     ?>
   </table>
+  <?php
+  }else{
+    echo '<caption>Nenhum aviso para visualizar no momento.</caption><br>';
+  }
+  ?>
 </div>
 
 </div>

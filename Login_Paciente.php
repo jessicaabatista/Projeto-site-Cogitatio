@@ -14,11 +14,9 @@ session_destroy();
 
 <div class="login-page"></div>
 <div class="form">
-  <p>Login Cliente</p>
+  <p>Login</p>
   <form method="POST" action="Login_Paciente_Post.php">
-    <label>E-mail:</label><br>
-    <input type="email" name="email" required placeholder="E-mail" />
-    <label>Senha:</label><br>
+    <input type="cpf" name="cpf" required minlength="11" maxlength="11" placeholder="CPF" />
     <input type="password" minlength="8" name="senha" required placeholder="Senha" />
     <input type="submit" value="Login" id="Login" name="Login">
   </form>
