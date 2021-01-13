@@ -25,22 +25,38 @@ $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informa�
   <p>Agenda</p>
   <table border="1" align="center">
     <tr>
+      <th>Código</th>
       <th>Data da Consulta</th>
       <th>Horário</th>
       <th>Paciente</th>
     </tr>
     <?php
     while ($agenda = mysqli_fetch_array($consultas)) {
-      echo '<tr><td>' . $agenda['data'] . '</td>';
-      echo '<td>' . $agenda['horario'] . ':00</td>';
 
-      $sql = "SELECT nome_paciente FROM paciente WHERE id_paciente = " . $agenda['fk_paciente'] . "";
-      $buscaNome = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
-      $nome = mysqli_fetch_array($buscaNome);
+      $dataConsulta = date("Y-m-d", strtotime($agenda['data']));
+      $today = date("Y-m-d");
 
-      echo '<td>' . $nome['nome_paciente'] . '</td></tr>';
+      if ($today >= $dataConsulta) {
+
+        echo '<tr><td>' . $agenda['id_consulta'] . '</td>';
+        echo '<td>' . $agenda['data'] . '</td>';
+        echo '<td>' . $agenda['horario'] . ':00</td>';
+
+        $sql = "SELECT nome_paciente FROM paciente WHERE id_paciente = " . $agenda['fk_paciente'] . "";
+        $buscaNome = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
+        $nome = mysqli_fetch_array($buscaNome);
+
+        echo '<td>' . $nome['nome_paciente'] . '</td></tr>';
+      }
     }
     ?>
   </table>
+</div>
+
+<div class="form2">
+  <form method="POST" action="Deletar_Consulta.php">
+    <p>Digite o código da consulta que deseja excluir:</p>
+    <input type="number" name="consulta" />
+  </form>
 </div>
 </div>
