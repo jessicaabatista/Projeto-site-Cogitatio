@@ -14,7 +14,10 @@ $resultado = mysqli_query($link, $busca) or die("Erro ao tentar gravar as inform
 $row = mysqli_fetch_array($resultado);
 $count = $row['cntUser'];
 
-if ($count > 0) {
+$dataConsulta = date("Y-m-d", strtotime($data));
+$today = date("Y-m-d");
+
+if ($count > 0 || $today >= $dataConsulta) {
 ?>
 
   <head>
@@ -39,9 +42,9 @@ if ($count > 0) {
 } else if ((empty($_POST['data']) == false) and (empty($_POST['horario']) == false) and (empty($_POST['paciente']) == false)) { //verifica se estão preenchidos
 
   $sqlPsicologo = "SELECT psi.id_psicologo FROM psicologo psi
-  INNER JOIN paciente p ON p.fk_psicologo = psi.id_psicologo AND p.id_paciente = ". $paciente ."";
+  INNER JOIN paciente p ON p.fk_psicologo = psi.id_psicologo AND p.id_paciente = " . $paciente . "";
   $psicologo = mysqli_query($link, $sqlPsicologo) or die("Erro ao tentar gravar as informações!");
-  
+
   $sql = "INSERT INTO consulta (`data`, `horario`, `fk_psicologo`, `fk_paciente`) values ('$data', '$horario', '$psicologo', '$paciente')";
 
   mysqli_query($link, $sql) or die("Erro ao tentar gravar as informações!");

@@ -14,7 +14,10 @@ $resultado = mysqli_query($link, $busca) or die("Erro ao tentar gravar as inform
 $row = mysqli_fetch_array($resultado);
 $count = $row['cntUser'];
 
-if ($count > 0) {
+$dataConsulta = date("Y-m-d", strtotime($data));
+$today = date("Y-m-d");
+
+if ($count > 0 || $today >= $dataConsulta) {
 ?>
 
   <head>
