@@ -31,7 +31,7 @@ $selectPsicologo = mysqli_query($link, $sqlPsicologo) or die("Erro ao tentar gra
     <label>CPF:</label><br>
     <input type="text" name="cpf" minlength="11" maxlength="11" required placeholder="CPF" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;">
 
-    <label>ome Completo:</label><br>
+    <label>Nome Completo:</label><br>
     <input type="text" name="nome" required placeholder="Nome" minlength="12" maxlength="100" pattern="^[^-\s][a-zA-ZÀ-ú ]*" />
 
     <label>Telefone:</label><br>

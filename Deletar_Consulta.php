@@ -1,5 +1,6 @@
 <?php
 
+
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 
 session_start();

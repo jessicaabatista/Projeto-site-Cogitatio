@@ -37,7 +37,7 @@ if (isset($_POST['Login'])) {
 
     if ($count > 0) {
       $_SESSION["psicologo"] = "psicologologado";
-
+      $_SESSION["geral"] = "psicologologado";
       $sql_query = "SELECT * FROM psicologo WHERE email_psicologo = '$P_Email' and senha_psicologo = '$P_Senha'";
       $result = mysqli_query($strcon, $sql_query);
       $dados = mysqli_fetch_array($result);

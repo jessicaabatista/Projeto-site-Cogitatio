@@ -1,8 +1,9 @@
 <?php
+// carrega a barra do Funcionario
 include_once("Barra_Funcionario.php");
-// retomando a sessão criada:
+// retomando a sessão criada
 session_start();
-
+// checa se o usuário logado é um Funcionario, caso contrário, derireciona para o logout
 if ($_SESSION["funcionario"] != "funcionariologado") {
   header('Location: logout.php');
 }

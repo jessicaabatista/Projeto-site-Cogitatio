@@ -22,9 +22,5 @@
                 </li>
             </ul>
         </div>
-        <button class="nav-toggler btn btn-outline-light btn-lg" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-            <!-- Botão navegação -->
-            <span class="navbar-toggler-icon"></span>
-        </button>
     </div>
 </nav>

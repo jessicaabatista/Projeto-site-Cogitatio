@@ -1,8 +1,16 @@
 <?php
-include_once("Barra_Inicial.php");
-$link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
-
 session_start();
+if ($_SESSION["geral"] != "psicologologado" && $_SESSION["geral"] != "funcionariologado") {
+  header('Location: logout.php');
+}
+
+if ($_SESSION["geral"] = "psicologologado") {
+  include_once("Barra_Psicologo.php");
+}elseif($_SESSION["geral"] = "funcionariologado"){
+  include_once("Barra_Funcionario.php");
+}
+
+$link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 
 $sqlPaciente = "SELECT nome_paciente, id_paciente FROM paciente";
 $selectPaciente = mysqli_query($link, $sqlPaciente) or die("Erro ao tentar buscar as informações!");

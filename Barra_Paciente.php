@@ -5,6 +5,9 @@
         <!-- Titulo -->
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                    <a class="nav-link" >Paciente</a>
+                </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="Inicial_Paciente.php">Inicio</a>
                 </li>
@@ -19,9 +22,5 @@
                 </li>
             </ul>
         </div>
-        <button class="nav-toggler btn btn-outline-light btn-lg" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-            <!-- Botão navegação -->
-            <span class="navbar-toggler-icon"></span>
-        </button>
     </div>
 </nav>

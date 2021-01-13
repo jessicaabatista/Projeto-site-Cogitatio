@@ -36,6 +36,7 @@ if (isset($_POST['Login'])) {
 
   if ($count > 0) {
     $_SESSION["funcionario"] = "funcionariologado";
+    $_SESSION["geral"] = "funcionariologado";
 
     $sql_query = "SELECT * FROM funcionario WHERE email_funcionario = '$P_Email' and senha_funcionario = '$P_Senha'";
     $result = mysqli_query($strcon, $sql_query);
