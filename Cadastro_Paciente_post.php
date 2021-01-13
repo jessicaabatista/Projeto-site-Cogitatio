@@ -14,6 +14,11 @@ $P_Endereco = $_POST['endereco'];
 $P_Data = $_POST['data'];
 $P_Psicologo = $_POST['psicologo'];
 
+$datenow = date('Y-m-d');
+$date1 = new DateTime($P_Data);
+$date2 = new DateTime($datenow);
+$interval = $date1->diff($date2);
+
 ?>
 
 <head>
@@ -24,24 +29,36 @@ $P_Psicologo = $_POST['psicologo'];
   <link href="Estilo.css" rel="stylesheet">
 </head>
 
-<div class="login-page"></div>
-<div class="form">
-  <table border="1" style='width:20%'>
-    <tr>
-    </tr>
-</div>
-</div>
-
 <?php
-if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['cpf']) == false) and (empty($_POST['nome']) == false) and (empty($_POST['telefone']) == false) and (empty($_POST['endereco']) == false) and (empty($_POST['data']) == false) and (empty($_POST['psicologo']) == false)) { //verifica se estão preenchidos
+if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['cpf']) == false) and (empty($_POST['nome']) == false) and (empty($_POST['telefone']) == false) and (empty($_POST['endereco']) == false) and (empty($_POST['data']) == false) and (empty($_POST['psicologo']) == false) and ($interval->y >= 18)) { //verifica se estão preenchidos
 
   $sql = "INSERT INTO paciente (email_paciente, senha_paciente, cpf_paciente, nome_paciente, telefone_paciente, endereco_paciente, data_nasc_paciente, fk_psicologo) values ('$P_Email', '$P_Senha', '$P_Cpf', '$P_Nome', '$P_Telefone', '$P_Endereco', '$P_Data', '$P_Psicologo')";
 
   mysqli_query($strcon, $sql) or die("Erro ao tentar gravar as informações! Algum dado pode já estar cadastrado ou incompleto");
 
-  echo "Cadastrado feito com sucesso";
+  echo '<div class="login-page">
+  </div>
+  <div class="form">
+  <p>Cadastrado feito com sucesso!</p>
+  </div>
+  </div>';
 } else {
-  echo "Dados não preenchidos";
+  if ($interval->y < 18) {
+    echo '<div class="login-page">
+    </div>
+    <div class="form">
+    <p>Para se cadastrar o usuário deve ter 18 anos ou mais!</p>
+    </div>
+    </div>';
+  } else {
+    echo '<div class="login-page">
+    </div>
+    <div class="form">
+    <p>Dados não preenchidos!</p>
+    </div>
+    </div>';
+  }
 }
+
 
 ?>

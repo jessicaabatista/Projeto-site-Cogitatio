@@ -40,7 +40,7 @@ if ($teste != null){
       $dataConsulta = date("Y-m-d", strtotime($agenda['data']));
       $today = date("Y-m-d");
 
-      if ($today >= $dataConsulta) {
+      if ($today <= $dataConsulta) {
 
         echo '<tr><td>' . $agenda['id_consulta'] . '</td>';
         echo '<td>' . $agenda['data'] . '</td>';
@@ -64,7 +64,7 @@ if ($teste != null){
 
 <div class="form2">
   <form method="POST" action="Deletar_Consulta.php">
-    <p>Digite o código da consulta que deseja excluir:</p>
+    <p>Digite o código da consulta que deseja cancelar:</p>
     <input type="number" name="consulta" />
     <input type="submit" value="Excluir" id="excluir" name="excluir">
   </form>
