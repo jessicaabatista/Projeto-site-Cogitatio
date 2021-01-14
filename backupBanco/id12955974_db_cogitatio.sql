@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13-Jan-2021 às 03:27
+-- Tempo de geração: 14-Jan-2021 às 02:39
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 7.4.13
 
@@ -47,15 +47,6 @@ CREATE TABLE `consulta` (
   `fk_psicologo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `consulta`
---
-
-INSERT INTO `consulta` (`id_consulta`, `data`, `horario`, `fk_paciente`, `fk_psicologo`) VALUES
-(4, '2021-01-14', 10, 3, 6),
-(8, '2021-01-20', 18, 3, 6),
-(9, '2021-01-10', 17, 3, 6);
-
 -- --------------------------------------------------------
 
 --
@@ -71,13 +62,6 @@ CREATE TABLE `funcionario` (
   `endereco_funcionario` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `telefone_funcionario` char(11) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Extraindo dados da tabela `funcionario`
---
-
-INSERT INTO `funcionario` (`id_funcionario`, `senha_funcionario`, `email_funcionario`, `cpf_funcionario`, `nome_funcionario`, `endereco_funcionario`, `telefone_funcionario`) VALUES
-(2, '12345678', 'teste2@gmail.com', '00000000000', 'testetestetesteteste', 'aaaaaaaaaaaaaaaaaa', '11111111111');
 
 -- --------------------------------------------------------
 
@@ -97,13 +81,6 @@ CREATE TABLE `paciente` (
   `fk_psicologo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Extraindo dados da tabela `paciente`
---
-
-INSERT INTO `paciente` (`id_paciente`, `email_paciente`, `senha_paciente`, `cpf_paciente`, `nome_paciente`, `telefone_paciente`, `endereco_paciente`, `data_nasc_paciente`, `fk_psicologo`) VALUES
-(3, 'teste3@gmail.com', '12345678', '00000000011', 'teste pacteste pacteste pac', '22222222222', 'teste endereço 3', '2021-01-12', 6);
-
 -- --------------------------------------------------------
 
 --
@@ -121,13 +98,6 @@ CREATE TABLE `psicologo` (
   `endereco_psicologo` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `infos_psicologo` varchar(500) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Extraindo dados da tabela `psicologo`
---
-
-INSERT INTO `psicologo` (`id_psicologo`, `crp_psicologo`, `senha_psicologo`, `cpf_psicologo`, `nome_psicologo`, `email_psicologo`, `telefone_psicologo`, `endereco_psicologo`, `infos_psicologo`) VALUES
-(6, '123451111111', '12345678', '11111111111', 'psi testeaaaaaaaaaaaaaaaa', 'teste@gmail.com', '12222222222', 'aaaaaaaaaaaaaaaaaaaaaaaa', 'teste');
 
 --
 -- Índices para tabelas despejadas
@@ -177,10 +147,16 @@ ALTER TABLE `psicologo`
 --
 
 --
+-- AUTO_INCREMENT de tabela `avisos`
+--
+ALTER TABLE `avisos`
+  MODIFY `id_aviso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `funcionario`
@@ -192,7 +168,7 @@ ALTER TABLE `funcionario`
 -- AUTO_INCREMENT de tabela `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `id_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_paciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `psicologo`
