@@ -22,14 +22,14 @@ $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 
 <div class="login-page"></div>
 <div class="form">
-  <p>Marcar Horário</p>
+<h5>Marcar Horário</h5>
   <form method="POST" action="Marcar_Consulta_Paciente_Post.php">
 
     <label>Data da Consulta:</label>
     <input name="data" required type="date" value="0000-00-00" />
 
     <label>Horário da Consulta:</label><br>
-    <select name="horario" require>
+    <select name="horario" required>
       <option value="09">09:00</option>
       <option value="10">10:00</option>
       <option value="11">11:00</option>

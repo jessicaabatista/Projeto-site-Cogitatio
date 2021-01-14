@@ -4,9 +4,9 @@ if ($_SESSION["geral"] != "psicologologado" && $_SESSION["geral"] != "funcionari
   header('Location: logout.php');
 }
 
-if ($_SESSION["geral"] = "psicologologado") {
+if ($_SESSION["geral"] == "psicologologado") {
   include_once("Barra_Psicologo.php");
-}elseif($_SESSION["geral"] = "funcionariologado"){
+}elseif($_SESSION["geral"] == "funcionariologado"){
   include_once("Barra_Funcionario.php");
 }
 

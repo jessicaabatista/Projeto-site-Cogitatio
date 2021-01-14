@@ -21,7 +21,9 @@ $P_Senha = $_POST['senha'];
 <div class="login-page">
   <div class="form">
     <p>Login ou senha incorretos</p>
-    <input type="button" value="Voltar" class="btn btn-primary btn-lg" onClick="history.go(-1)">
+    <a onClick="history.go(-1)">
+            <button type="button" class="btn btn-primary btn-lg">Tentar Novamente</button>
+        </a>
   </div>
 </div>
 
@@ -42,11 +44,11 @@ if (isset($_POST['Login'])) {
       $result = mysqli_query($strcon, $sql_query);
       $dados = mysqli_fetch_array($result);
 
-      $_SESSION["id"] = $dados['id_paciente'];
+      $_SESSION['id'] = $dados['id_paciente'];
 
       header('Location: inicial_paciente.php');
     } else {
-      echo "Usuario invalido";
+    
     }
   }
 }

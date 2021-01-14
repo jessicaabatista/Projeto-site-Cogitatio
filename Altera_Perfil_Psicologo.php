@@ -1,12 +1,3 @@
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE-edge">
-  <title>Alterar Dados</title>
-  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link href="Estilo.css" rel="stylesheet">
-</head>
-
 <?php
 // carrega a barra do psicologo
 include_once("Barra_psicologo.php");
@@ -18,9 +9,35 @@ if ($_SESSION["psicologo"] != "psicologologado") {
 }
 
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
-$sql = "SELECT * FROM psicologo WHERE id_psicologo = " . $_SESSION['id'] . "";
+
+$P_Senha = $_POST['senha'];
+$P_Email = $_POST['email'];
+$P_Telefone = $_POST['telefone'];
+$P_Endereco = $_POST['endereco'];
+$P_ID = $_POST['id'];
+
+if ((empty($_POST['email']) == false) and (empty($_POST['senha']) == false) and (empty($_POST['endereco']) == false) and (empty($_POST['telefone']) == false)) { //verifica se estão preenchidos
+
+  $sqlUpdate = "UPDATE psicologo SET `email_psicologo` = '$P_Email', `senha_psicologo` = '$P_Senha', `telefone_psicologo` = '$P_Telefone', `endereco_psicologo` = '$P_Endereco' WHERE id_psicologo = '$P_ID'";
+
+  mysqli_query($link, $sqlUpdate) or die("Erro ao tentar gravar as informações!");
+} else {
+  echo "Dados não preenchidos";
+}
+
+$sql = "SELECT * FROM psicologo WHERE id_psicologo = " . $P_ID . "";
+
 $dados = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
+
 ?>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <title>Alterar Dados</title>
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link href="Estilo.css" rel="stylesheet">
+</head>
 
 <div class="login-page"></div>
 <div class="form">
@@ -36,7 +53,7 @@ $dados = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informaçõe
 
       echo '<label>Endereço:</label><br><input type="text" name="endereco" required placeholder="' . $perfil['endereco_psicologo'] . '" pattern="^[^-\s][a-zA-ZÀ-ú ]*" value="' . $perfil['endereco_psicologo'] . '">';
 
-      echo '<input hidden name="id" value="' . $_SESSION['id'] . '">';
+      echo '<input hidden name="id" value="' . $P_ID . '">';
     }
     ?>
     <input type="submit" value="Alterar" id="Alterar" name="Alterar">

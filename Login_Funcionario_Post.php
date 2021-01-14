@@ -20,8 +20,10 @@ $F_Senha = $_POST['senha'];
 
 <div class="login-page">
   <div class="form">
-    <p>Login ou senha incorretos</p>
-    <input type="button" value="Voltar" class="btn btn-primary btn-lg" onClick="history.go(-1)">
+  <p>Login ou senha incorretos</p>
+    <a onClick="history.go(-1)">
+            <button type="button" class="btn btn-primary btn-lg">Tentar Novamente</button>
+        </a>
   </div>
 </div>
 
@@ -38,7 +40,7 @@ if (isset($_POST['Login'])) {
     $_SESSION["funcionario"] = "funcionariologado";
     $_SESSION["geral"] = "funcionariologado";
 
-    $sql_query = "SELECT * FROM funcionario WHERE cpf_funcionario = '$P_Cpf' and senha_funcionario = '$P_Senha'";
+    $sql_query = "SELECT * FROM funcionario WHERE cpf_funcionario = '$F_Cpf' and senha_funcionario = '$F_Senha'";
     $result = mysqli_query($strcon, $sql_query);
     $dados = mysqli_fetch_array($result);
 

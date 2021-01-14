@@ -1,3 +1,10 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>Consultas Marcadas</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="Estilo.css" rel="stylesheet">
+    <head>
 <?php
 // carrega a barra do Funcionario
 include_once("Barra_Funcionario.php");
@@ -17,23 +24,16 @@ $teste = mysqli_fetch_array($consultas);
 if ($teste != null){
 ?>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE-edge">
-  <title>Consultas Marcadas</title>
-  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link href="Estilo.css" rel="stylesheet">
-</head>
-
 <div class="login-page"></div>
 <div class="form2">
   <p>Consultas</p>
   <table border="1" align="center">
     <tr>
-      <th>Data da Consulta</th>
-      <th>Horário</th>
-      <th>Paciente</th>
-      <th>Psicologo</th>
+      <th>  Código  </th>
+      <th>       Data       </th>
+      <th> Horário </th>
+      <th>           Paciente            </th>
+      <th>     Psicologo     </th>
     </tr>
     <?php
     while ($agenda = mysqli_fetch_array($consultas)) {
@@ -43,31 +43,36 @@ if ($teste != null){
 
       if ($today <= $dataConsulta) {
 
-        echo '<tr><td>' . $agenda['id_consulta'] . '</td>';
-        echo '<td>' . $agenda['data'] . '</td>';
-        echo '<td>' . $agenda['horario'] . ':00</td>';
+        echo '<tr><td>     ' . $agenda['id_consulta'] . '</td>';
+        echo '<td> ' . $agenda['data'] . '</td>';
+        echo '<td>   ' . $agenda['horario'] . ':00</td>';
 
         $sql = "SELECT nome_paciente FROM paciente WHERE id_paciente = " . $agenda['fk_paciente'] . "";
         $buscaNome = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
         $nome = mysqli_fetch_array($buscaNome);
 
-        echo '<td>' . $nome['nome_paciente'] . '</td>';
+        echo '<td>     ' . $nome['nome_paciente'] . '</td>';
 
-        $sql_psicologo = "SELECT nome_psicologo FROM psicologo WHERE id_psicologo = " . $agenda['fk_psicologo'] . "";
-        $buscaNome_psicologo = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
-        $nome_psicologo = mysqli_fetch_array($buscaNome);
+        $sql_p = "SELECT nome_psicologo FROM psicologo WHERE id_psicologo = " . $agenda['fk_psicologo'] . "";
+        $buscaNome_p = mysqli_query($link, $sql_p) or die("Erro ao tentar buscar as informações!");
+        $nome_psicologo = mysqli_fetch_array($buscaNome_p);
 
-        echo '<td>' . $nome_psicologo['nome_psicologo'] . '</td></tr>';
+        echo '<td>  ' . $nome_psicologo['nome_psicologo'] . '</td></tr>';
       }
     }
     ?>
   </table>
+  
   <?php
   }else{
-    echo '<h5>Nenhuma consulta para visualizar no momento.</h5><br>';
+  ?>
+  <br><br><br><br>
+  <div class="form2">
+  <h5>Nenhuma consulta para visualizar no momento.</h5><br>
+  <?php 
   }
   ?>
-</div>
+  </div>
 
 <div class="form2">
   <form method="POST" action="Deletar_Consulta.php">

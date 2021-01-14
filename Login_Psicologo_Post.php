@@ -20,8 +20,10 @@ $P_Senha = $_POST['senha'];
 
 <div class="login-page">
   <div class="form">
-    <p>Login ou senha incorretos</p>
-    <input type="button" value="Voltar" class="btn btn-primary btn-lg" onClick="history.go(-1)">
+  <p>Login ou senha incorretos</p>
+    <a onClick="history.go(-1)">
+            <button type="button" class="btn btn-primary btn-lg">Tentar Novamente</button>
+        </a>
   </div>
 </div>
 
@@ -46,7 +48,6 @@ if (isset($_POST['Login'])) {
 
       header('Location: inicial_psicologo.php');
     } else {
-      echo "Usuario invalido";
     }
   }
 }

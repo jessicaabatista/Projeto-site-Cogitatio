@@ -14,7 +14,7 @@ session_destroy();
 
 <div class="login-page"></div>
 <div class="form">
-  <p>Login Funcionário</p>
+<h5>Login Funcionário</h5>
   <form method="POST" action="Login_Funcionario_Post.php">
     <input type="cpf" name="cpf" required minlength="11" maxlength="11" placeholder="CPF" />
     <input type="password" minlength="8" name="senha" required placeholder="Senha" />

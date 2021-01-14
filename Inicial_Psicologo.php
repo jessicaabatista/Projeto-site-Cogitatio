@@ -29,10 +29,10 @@ if ($teste != null){
   <p>Agenda</p>
   <table border="1" align="center">
     <tr>
-      <th>Código</th>
-      <th>Data da Consulta</th>
-      <th>Horário</th>
-      <th>Paciente</th>
+      <th>  Código  </th>
+      <th>          Data   </th>
+      <th> Horário </th>
+      <th>               Paciente</th>
     </tr>
     <?php
     while ($agenda = mysqli_fetch_array($consultas)) {
@@ -42,25 +42,30 @@ if ($teste != null){
 
       if ($today <= $dataConsulta) {
 
-        echo '<tr><td>' . $agenda['id_consulta'] . '</td>';
-        echo '<td>' . $agenda['data'] . '</td>';
-        echo '<td>' . $agenda['horario'] . ':00</td>';
+        echo '<tr><td>      ' . $agenda['id_consulta'] . ' </td>';
+        echo '<td>    ' . $agenda['data'] . '    </td>';
+        echo '<td>   ' . $agenda['horario'] . ':00</td>';
 
         $sql = "SELECT nome_paciente FROM paciente WHERE id_paciente = " . $agenda['fk_paciente'] . "";
         $buscaNome = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
         $nome = mysqli_fetch_array($buscaNome);
 
-        echo '<td>' . $nome['nome_paciente'] . '</td></tr>';
+        echo '<td>        ' . $nome['nome_paciente'] . '        </td></tr>';
       }
     }
     ?>
   </table>
+  
   <?php
   }else{
-    echo '<h5>Nenhuma consulta para visualizar no momento.</h5><br>';
+  ?>
+  <br><br><br><br>
+  <div class="form2">
+  <h5>Nenhuma consulta para visualizar no momento.</h5><br>
+  <?php 
   }
   ?>
-</div>
+  </div>
 
 <div class="form2">
   <form method="POST" action="Deletar_Consulta.php">

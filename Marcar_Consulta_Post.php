@@ -4,9 +4,9 @@ if ($_SESSION["geral"] != "psicologologado" && $_SESSION["geral"] != "funcionari
   header('Location: logout.php');
 }
 
-if ($_SESSION["geral"] = "psicologologado") {
+if ($_SESSION["geral"] == "psicologologado") {
   include_once("Barra_Psicologo.php");
-}elseif($_SESSION["geral"] = "funcionariologado"){
+}elseif($_SESSION["geral"] == "funcionariologado"){
   include_once("Barra_Funcionario.php");
 }
 
@@ -68,7 +68,9 @@ if ($count > 0 || $today >= $dataConsulta) {
   <div class="login-page"></div>
   <div class="form">
     <p>Horário agendado com sucesso!</p>
-    <input type="button" value="Voltar" class="btn btn-primary btn-lg" onClick="history.go(-1)">
+    <a onClick="history.go(-1)">
+            <button type="button" class="btn btn-primary btn-lg">Marque outra consulta</button>
+        </a>
   </div>
   </div>
 
