@@ -57,7 +57,7 @@ if ($teste != null){
   </table>
   <?php
   }else{
-    echo '<caption>Nenhuma consulta para visualizar no momento.</caption><br>';
+    echo '<h5>Nenhuma consulta para visualizar no momento.</h5><br>';
   }
   ?>
 </div>

@@ -15,7 +15,7 @@ if (empty($_POST['consulta']) == false) { //verifica se estão preenchidos
   $sql = "DELETE FROM consulta WHERE id_consulta = '$id'";
   mysqli_query($link, $sql) or die("Erro ao tentar gravar as informações!");
 
-  $sqlMensagem = "INSERT INTO avisos (`mensagem`, `fk_paciente`) values ('A consulta ".$id." foi cancelada!', ". $consulta['fk_paciente'] .")";
+  $sqlMensagem = "INSERT INTO avisos (`mensagem`, `fk_paciente`) values ('A consulta ". $id ." foi cancelada!', ". $consulta['fk_paciente'] .")";
   mysqli_query($link, $sqlMensagem) or die("Erro ao tentar gravar as informações!");
 ?>
 

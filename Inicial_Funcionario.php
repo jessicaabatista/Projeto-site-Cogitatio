@@ -9,7 +9,7 @@ if ($_SESSION["funcionario"] != "funcionariologado") {
 }
 
 $link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
-$sql = "SELECT *, count(id_consulta) AS cntUser FROM consulta";
+$sql = "SELECT * FROM consulta";
 $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
 
 $teste = mysqli_fetch_array($consultas);
@@ -64,7 +64,7 @@ if ($teste != null){
   </table>
   <?php
   }else{
-    echo '<caption>Nenhuma consulta para visualizar no momento.</caption><br>';
+    echo '<h5>Nenhuma consulta para visualizar no momento.</h5><br>';
   }
   ?>
 </div>

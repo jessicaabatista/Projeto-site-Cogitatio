@@ -14,88 +14,69 @@ $sql = "SELECT * FROM consulta WHERE fk_paciente = " . $_SESSION['id'] . "";
 $consultas = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
 
 $teste = mysqli_fetch_array($consultas);
-  
-if ($teste != null){
+
+if ($teste != null) {
 ?>
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE-edge">
-  <title>Minhas Consultas</title>
-  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link href="Estilo.css" rel="stylesheet">
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>Minhas Consultas</title>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="Estilo.css" rel="stylesheet">
+  </head>
 
-<div class="login-page"></div>
-<div class="form2">
-  <p>Suas Consultas</p>
-  <table border="1" align="center">
-    <tr>
-      <th>Código</th>
-      <th>Data da Consulta</th>
-      <th>Horário</th>
-      <th>Psicologo</th>
-    </tr>
-    <?php
-    while ($agenda = mysqli_fetch_array($consultas)) {
+  <div class="login-page"></div>
+  <div class="form2">
+    <p>Suas Consultas</p>
+    <table border="1" align="center">
+      <tr>
+        <th>Código</th>
+        <th>Data da Consulta</th>
+        <th>Horário</th>
+      </tr>
+      <?php
+      while ($agenda = mysqli_fetch_array($consultas)) {
 
-      $dataConsulta = date("Y-m-d", strtotime($agenda['data']));
-      $today = date("Y-m-d");
+        $dataConsulta = date("Y-m-d", strtotime($agenda['data']));
+        $today = date("Y-m-d");
 
-      if ($today <= $dataConsulta) {
+        if ($today <= $dataConsulta) {
 
-        echo '<tr><td>' . $agenda['id_consulta'] . '</td>';
-        echo '<td>' . $agenda['data'] . '</td>';
-        echo '<td>' . $agenda['horario'] . ':00</td>';
-
-        $sql = "SELECT nome_psicologo FROM psicologo WHERE id_psicologo = " . $agenda['fk_psicologo'] . "";
-        $buscaNome = mysqli_query($link, $sql) or die("Erro ao tentar buscar as informações!");
-        $nome = mysqli_fetch_array($buscaNome);
-
-        echo '<td>' . $nome['nome_psicologo'] . '</td></tr>';
+          echo '<tr><td>' . $agenda['id_consulta'] . '</td>';
+          echo '<td>' . $agenda['data'] . '</td>';
+          echo '<td>' . $agenda['horario'] . ':00</td>';
+        }
       }
-    }
-    ?>
-  </table>
+      ?>
+    </table>
 
   <?php
-  }else{
-    echo '<caption>Nenhuma consulta para visualizar no momento.</caption><br>';
-  }
+} else {
+  echo '<h5>Nenhuma consulta para visualizar no momento.</h5><br>';
+}
   ?>
-</div>
-<br>
-<br>
-<div class="form2">
-
-  <?php
-  $sqlMensagem = "SELECT * FROM avisos WHERE fk_paciente = " . $_SESSION['id'] . " ORDER BY id_aviso DESC LIMIT 5";
-  $mensagem = mysqli_query($link, $sqlMensagem) or die("Erro ao tentar buscar as informações!");
-  $teste = mysqli_fetch_array($mensagem);
-  
-  if ($teste != null){
-  ?>
-
-  <caption>Avisos</caption><br>
-  <table border="1" align="center">
-    <tr>
-      <th>Código</th>
-      <th>Mensagem</th>
-    </tr>
+  </div>
+  <br>
+  <br>
+  <div class="form2">
     <?php
+    $sqlMensagem = "SELECT * FROM avisos WHERE fk_paciente = " . $_SESSION['id'] . " ORDER BY id_aviso DESC LIMIT 5";
+    $mensagem = mysqli_query($link, $sqlMensagem) or die("Erro ao tentar buscar as informações!");
+    $testeAviso = mysqli_fetch_array($mensagem);
 
-    while ($aviso = mysqli_fetch_row($mensagem)) {
-      echo '<tr><td>' . $aviso['id_aviso'] . '</td>';
-      echo '<td>' . $aviso['mensagem'] . '</td></tr>';
+    if ($testeAviso != null) {
+    ?>
+      <h5>Avisos</h5><br>
+      <?php
+      while ($aviso = mysqli_fetch_array($mensagem)) {
+        echo '<p># ' . $aviso['mensagem'] . '</p>';
+      }
+      ?>
+    <?php
+    } else {
+      echo '<h5>Nenhum aviso para visualizar no momento.</h5><br>';
     }
     ?>
-  </table>
-  <?php
-  }else{
-    echo '<caption>Nenhum aviso para visualizar no momento.</caption><br>';
-  }
-
-  ?>
-</div>
-
-</div>
+  </div>
+  </div>

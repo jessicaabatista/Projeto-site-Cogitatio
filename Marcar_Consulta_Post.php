@@ -1,16 +1,16 @@
 <?php
-// carrega a barra do paciente
-include_once("Barra_Paciente.php");
-// retomando a sessão criada
 session_start();
-// checa se o usuário logado é um paciente, caso contrário, derireciona para o logout
-if ($_SESSION["paciente"] != "pacientelogado") {
+if ($_SESSION["geral"] != "psicologologado" && $_SESSION["geral"] != "funcionariologado") {
   header('Location: logout.php');
 }
 
-$link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
+if ($_SESSION["geral"] = "psicologologado") {
+  include_once("Barra_Psicologo.php");
+}elseif($_SESSION["geral"] = "funcionariologado"){
+  include_once("Barra_Funcionario.php");
+}
 
-session_start();
+$link = mysqli_connect('127.0.0.1', 'root', '', 'id12955974_db_cogitatio');
 
 $data = $_POST['data'];
 $horario   = $_POST['horario'];
@@ -50,13 +50,13 @@ if ($count > 0 || $today >= $dataConsulta) {
   $sqlPsicologo = "SELECT psi.id_psicologo FROM psicologo psi
   INNER JOIN paciente p ON p.fk_psicologo = psi.id_psicologo AND p.id_paciente = " . $paciente . "";
   $psicologo = mysqli_query($link, $sqlPsicologo) or die("Erro ao tentar gravar as informações!");
+  $psicologoArray = mysqli_fetch_array($psicologo);
+  $psicologoEscolhido = $psicologoArray['id_psicologo'];
 
-  $sql = "INSERT INTO consulta (`data`, `horario`, `fk_psicologo`, `fk_paciente`) values ('$data', '$horario', '$psicologo', '$paciente')";
-
+  $sql = "INSERT INTO consulta (`data`, `horario`, `fk_psicologo`, `fk_paciente`) values ('$data', '$horario', '$psicologoEscolhido', '$paciente')";
   mysqli_query($link, $sql) or die("Erro ao tentar gravar as informações!");
 
 ?>
-
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
@@ -73,9 +73,7 @@ if ($count > 0 || $today >= $dataConsulta) {
   </div>
 
 <?php
-
 } else {
   echo "Dados não preenchidos";
 }
-
 ?>
